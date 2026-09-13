@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Coverage Search — Results — Caseflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9f7",
+            "surface-dim": "#dadad8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#444748",
+            "primary": "#161616",
+            "secondary": "#9a442d",
+            "outline": "#747878",
+            "outline-variant": "#c4c7c7",
+            "tertiary-fixed": "#ffddb2",
+            "on-tertiary-fixed": "#291800"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #f9f9f7;
+      color: #1a1c1b;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-surface flex flex-col min-h-screen">
+  <!-- Workflow Header -->
+  <header class="w-full bg-surface border-b border-surface-container pt-4 pb-3 px-5">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <a href="#" class="inline-flex items-center gap-1.5 text-on-surface hover:text-secondary font-medium text-[15px] py-2">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        <span class="">Caseload</span>
+      </a>
+      <span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-[13px] font-semibold">Youth Outreach</span>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 w-full max-w-md mx-auto px-5 pt-5 pb-8 flex flex-col">
+    <div class="mb-5">
+      <h1 class="text-[26px] font-extrabold text-primary tracking-tight">Find a program client</h1>
+      <p class="text-[14px] text-on-surface-variant mt-0.5">Youth Outreach coverage</p>
+    </div>
+
+    <!-- Active Search Input -->
+    <div class="relative w-full mb-5">
+      <div class="relative flex items-center w-full bg-surface-container-lowest rounded-DEFAULT px-3.5 py-3 shadow-[0_8px_20px_-4px_rgba(26,28,27,0.06)] border border-surface-container-high">
+        <span class="material-symbols-outlined text-[20px] text-secondary mr-2.5 select-none">search</span>
+        <input type="text" value="Sam" class="w-full bg-transparent border-none outline-none text-[16px] text-primary font-medium" autofocus="">
+        <button aria-label="Clear query" class="p-1 text-outline hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[18px]">cancel</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Results Count -->
+    <div class="flex items-center justify-between px-1 mb-2.5">
+      <span class="text-[12px] font-bold uppercase tracking-wider text-on-surface-variant">2 program clients found</span>
+      <span class="text-[13px] text-outline">Youth Outreach</span>
+    </div>
+
+    <!-- Result Rows: Clean identity-only cards -->
+    <div class="flex flex-col gap-2.5 w-full">
+      <!-- Result 1 -->
+      <a href="#" class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-DEFAULT shadow-[0_4px_16px_-2px_rgba(26,28,27,0.04)] hover:shadow-md transition-all active:scale-[0.99] border border-surface-container/60">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-[15px] flex-shrink-0">
+            SL
+          </div>
+          <div class="flex flex-col min-w-0"><span class="text-[16px] font-bold text-primary truncate">Samira L.</span></div>
+        </div>
+        <div class="flex items-center gap-1.5 text-secondary font-semibold text-[14px] flex-shrink-0"><span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span></div>
+      </a>
+
+      <!-- Result 2 -->
+      <a href="#" class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-DEFAULT shadow-[0_4px_16px_-2px_rgba(26,28,27,0.04)] hover:shadow-md transition-all active:scale-[0.99] border border-surface-container/60">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-[15px] flex-shrink-0">
+            SK
+          </div>
+          <div class="flex flex-col min-w-0"><span class="text-[16px] font-bold text-primary truncate">Sam K.</span></div>
+        </div>
+        <div class="flex items-center gap-1.5 text-secondary font-semibold text-[14px] flex-shrink-0"><span class="material-symbols-outlined text-[20px] text-outline">chevron_right</span></div>
+      </a>
+    </div>
+
+    <!-- Quiet Policy Context Footer -->
+    
+  </main>
+
+
+
+
+</body></html>

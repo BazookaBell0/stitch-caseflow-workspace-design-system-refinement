@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Caseflow - Draft Preparation Failed</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching Caseflow design language -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            surface: '#F9F9F7',
+            carbon: '#161616',
+            secondary: '#5F6160',
+            clay: '#9A442D',
+            'clay-hover': '#863B26',
+            'clay-subtle': '#F8EFEA',
+            'clay-border': '#ECD3C7',
+            'neutral-pill': '#EFEFEB'
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-layout">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #121212;
+    }
+    /* Mobile simulated device frame */
+    .mobile-frame {
+      width: 100%;
+      max-width: 400px;
+      min-height: 844px;
+      height: 100dvh;
+      max-height: 874px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    /* Touch optimization */
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-0 sm:p-6 text-carbon antialiased select-none">
+<!-- BEGIN: DeviceContainer -->
+<div class="mobile-frame bg-surface flex flex-col justify-between relative overflow-hidden sm:rounded-[44px]" data-purpose="mobile-viewport">
+<!-- Top System Notch / Status Bar Simulation (Clean and unobtrusive) -->
+<div class="w-full pt-3 px-7 flex justify-between items-center text-xs font-semibold text-carbon opacity-80 z-20" data-purpose="status-bar">
+<span class="">9:41</span>
+<div class="flex items-center space-x-1.5">
+<!-- Cellular Signal Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.28 19.64 10.59 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path>
+</svg>
+<!-- Wifi Icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.55 0 6.78 1.44 9.15 3.77L12 19.33 2.85 11.27C5.22 8.94 8.45 7.5 12 7.5z"></path>
+</svg>
+<!-- Battery Icon -->
+<div class="w-5 h-2.5 border border-carbon rounded-[3px] p-0.5 flex items-center">
+<div class="w-full h-full bg-carbon rounded-[1px]"></div>
+</div>
+</div>
+</div>
+<!-- BEGIN: NavigationHeader -->
+<header class="w-full px-5 pt-3 pb-4 flex items-center justify-between border-b border-black/[0.04]" data-purpose="navigation-header">
+<!-- Back Navigation Button -->
+<button aria-label="Go back to previous screen" class="flex items-center space-x-1 text-carbon font-semibold text-[15px] -ml-1 py-1 px-2 rounded-lg active:bg-neutral-200/60 transition duration-150" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M15 18l-6-6 6-6"></path>
+</svg>
+<span class="">Back</span>
+</button>
+<!-- Center Title Tag -->
+<h1 class="text-[11px] font-bold tracking-[0.14em] uppercase text-carbon/80 text-center pr-10 flex-1">
+        PRIVACY REVIEW
+      </h1>
+<!-- Empty spacer to balance header center layout accurately -->
+<div class="w-4"></div>
+</header>
+<!-- END: NavigationHeader -->
+<!-- BEGIN: MainContentArea -->
+<main class="flex-1 flex flex-col items-center justify-center px-7 text-center -mt-8" data-purpose="recovery-state-content">
+<!-- Icon Container: Calm, restrained warm clay tone indicating non-destructive pause -->
+<div class="w-20 h-20 rounded-full bg-clay-subtle border border-clay-border flex items-center justify-center mb-6 shadow-sm" data-purpose="status-icon-wrapper">
+<!-- Quiet Shield with exclamation/pause element -->
+<svg class="w-9 h-9 text-clay stroke-[1.8]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<circle cx="12" cy="16" fill="currentColor" r="0.75"></circle>
+</svg>
+</div>
+<!-- Headline: Human, respectful, and clear -->
+<h2 class="text-[25px] font-bold leading-tight text-carbon tracking-tight">
+        Couldn’t prepare the draft
+      </h2>
+<!-- Reassuring Supportive Copy -->
+<p class="text-[15px] font-normal leading-relaxed text-secondary mt-2.5 max-w-[270px] mx-auto">
+        Your capture is still saved. Try again when you’re ready.
+      </p>
+<!-- Quiet reassurance badge / contextual safeguard pill -->
+
+</main>
+<!-- END: MainContentArea -->
+<!-- BEGIN: ActionsArea -->
+<section class="w-full px-6 pb-9 pt-2 flex flex-col space-y-3" data-purpose="action-buttons">
+<!-- Primary Action: Substantial tactile clay button -->
+<button class="w-full h-[50px] bg-clay hover:bg-clay-hover active:scale-[0.99] text-white font-semibold text-[16px] rounded-full shadow-md shadow-clay/20 flex items-center justify-center transition-all duration-150" data-purpose="retry-action-button" type="button">
+        Try again
+      </button>
+<!-- Secondary Action: Dignified ghost/neutral pill -->
+<button class="w-full min-h-[48px] bg-transparent hover:bg-black/[0.04] active:bg-black/[0.07] text-carbon font-semibold text-[15px] rounded-full flex items-center justify-center transition-colors duration-150" data-purpose="done-dismiss-button" type="button">
+        Done
+      </button>
+<!-- Subdued iOS Home Indicator Line -->
+<div class="pt-3 flex justify-center w-full">
+<div class="w-32 h-1 bg-black/20 rounded-full"></div>
+</div>
+</section>
+<!-- END: ActionsArea -->
+</div>
+<!-- END: DeviceContainer -->
+
+
+</body></html>

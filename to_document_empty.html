@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <title>Nothing to Document — Caseflow</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F9F9F7',
+            surface: {
+              recessed: '#F4F4F2',
+              grouped: '#EEEEEC',
+              elevated: '#FFFFFF',
+              high: '#E8E8E6',
+              dim: '#DADAD8',
+            },
+            carbon: '#161616',
+            secondaryText: '#5F6160',
+            tertiaryText: '#858784',
+            divider: '#E8E8E5',
+            clay: {
+              DEFAULT: '#9A442D',
+              soft: '#FFDAD2',
+              dark: '#742814',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F9F9F7;
+      color: #161616;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas flex flex-col justify-start items-center p-0 m-0">
+  <div class="w-full max-w-[430px] min-h-screen bg-canvas flex flex-col relative pb-10">
+    
+    <!-- Top Focused Header -->
+    <header class="w-full pt-12 pb-4 px-5 flex items-center justify-between sticky top-0 bg-canvas/90 backdrop-blur-md z-20 border-b border-divider/60">
+      <div class="flex items-center gap-2">
+        <a href="#today" class="min-w-[44px] min-h-[44px] -ml-2 rounded-full flex items-center justify-center text-carbon hover:bg-surface-recessed active:scale-95 transition-all" aria-label="Back to Today">
+          <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+        </a>
+        <span class="text-[14px] font-semibold text-secondaryText uppercase tracking-wider">Today</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-grouped text-secondaryText text-[13px] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-surface-dim"></span>
+        <span class="">0 items</span>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-5 pt-4 flex flex-col gap-6">
+      
+      <!-- Title & Quiet Subtitle -->
+      <div class="flex flex-col gap-1">
+        <h1 class="text-[28px] font-extrabold text-carbon tracking-tight leading-tight">To document</h1>
+        <p class="text-[14px] font-normal text-secondaryText leading-relaxed">Interactions you still want to finish documenting.</p>
+      </div>
+
+      <!-- Empty State Card (Calm, no gamification or trophy graphics) -->
+      <div class="flex-1 flex flex-col items-center justify-center py-16 px-4 text-center my-auto">
+        <div class="w-14 h-14 rounded-full bg-surface-grouped flex items-center justify-center text-carbon mb-4 shadow-sm border border-divider/50">
+          <span class="material-symbols-outlined text-[26px] text-carbon" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        </div>
+        <h2 class="text-[20px] font-bold text-carbon mb-1.5 tracking-tight">Nothing to document</h2>
+        <p class="text-[14px] text-secondaryText max-w-[260px] leading-relaxed mb-6">
+          You’re caught up on saved interactions.
+        </p>
+        <a href="#today" class="min-h-[44px] px-6 rounded-full bg-surface-recessed hover:bg-surface-grouped text-carbon text-[14px] font-bold flex items-center gap-1.5 border border-divider/80 active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span class="">Back to Today</span>
+        </a>
+      </div>
+
+      <!-- Educational footer note -->
+      
+
+    </main>
+
+  </div>
+
+
+
+
+</body></html>

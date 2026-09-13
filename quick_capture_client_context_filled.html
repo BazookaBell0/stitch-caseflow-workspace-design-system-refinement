@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Quick Capture - Client Context - Caseflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'canvas': '#F9F9F7',
+        'surface-recessed': '#F4F4F2',
+        'surface-grouped': '#EEEEEC',
+        'surface-elevated': '#FFFFFF',
+        'carbon': '#161616',
+        'secondary': '#5F6160',
+        'tertiary': '#858784',
+        'divider': '#E8E8E5',
+        'clay': '#9A442D',
+        'clay-soft': '#FFDAD2',
+      },
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
+      borderRadius: {
+        'sheet': '24px',
+        'control': '16px',
+        'pill': '9999px',
+      }
+    }
+  }
+};
+</script>
+<style>
+@layer base {
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #161616;
+    color: #161616;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  ::-webkit-scrollbar { display: none; }
+}
+</style>
+</head>
+<body class="bg-carbon/60 flex justify-center items-end sm:items-center min-h-screen p-0 sm:p-4 antialiased selection:bg-clay-soft">
+
+  <!-- Mobile Frame / Sheet Container -->
+  <div class="relative w-full max-w-[400px] h-[92vh] sm:h-[840px] bg-canvas rounded-t-sheet sm:rounded-sheet shadow-[0_-12px_40px_rgba(0,0,0,0.28)] flex flex-col overflow-hidden border border-divider/60">
+    
+    <!-- Sheet Header -->
+    <header class="px-5 pt-4 pb-3 flex items-center justify-between border-b border-divider/50 bg-canvas/95 backdrop-blur-sm z-10 shrink-0">
+      <div class="flex items-center gap-3">
+        <button id="close-btn" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-carbon hover:bg-surface-grouped active:scale-95 transition-all" aria-label="Close Capture">
+          <span class="material-symbols-outlined text-[22px]">close</span>
+        </button>
+        <h1 class="text-[20px] font-bold text-carbon tracking-tight">Capture</h1>
+      </div>
+      
+    </header>
+
+    <!-- Scrollable Note Paper Surface -->
+    <main class="flex-1 flex flex-col px-5 pt-4 pb-6 overflow-y-auto">
+      
+      <!-- 1. Client Control (Preselected Context Surface) -->
+      <section class="mb-5">
+        <div class="flex items-center justify-between mb-2">
+          <label class="block text-[13px] font-semibold text-secondary uppercase tracking-wider">Client</label>
+          
+        </div>
+        
+        <div class="w-full h-14 px-4 rounded-control bg-surface-elevated border border-divider flex items-center justify-between shadow-[0_2px_8px_rgba(22,22,22,0.02)]">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-surface-grouped flex items-center justify-center text-carbon">
+              <span class="material-symbols-outlined text-[16px]">person</span>
+            </div>
+            <span class="text-[16px] font-bold text-carbon">Jordan M.</span>
+            <span class="text-[13px] text-secondary">· Youth Outreach</span>
+          </div>
+          <button id="change-client-btn" class="text-[13px] font-semibold text-secondary hover:text-carbon px-2 py-1 rounded-control hover:bg-surface-recessed transition-colors">
+            Change
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. What Happened? (Filled Synthetic Working Memory Note) -->
+      <section class="flex-1 flex flex-col min-h-[260px]">
+        <label for="capture-input" class="block text-[18px] font-bold text-carbon tracking-tight mb-2">What happened?</label>
+        
+        <!-- Clean tactile paper writing container -->
+        <div class="flex-1 w-full bg-surface-elevated rounded-control p-4 border-divider shadow-[0_2px_8px_rgba(22,22,22,0.02)] flex flex-col transition-colors">
+          <textarea id="capture-input" rows="8" class="w-full flex-1 bg-transparent border-none resize-none outline-none text-[16px] leading-[1.55] font-normal text-carbon placeholder:text-tertiary font-sans" spellcheck="false">Met Jordan after school. He said the bus didn’t arrive this morning. We talked about trying the earlier route tomorrow. I said I would call the school counsellor before the end of the day.</textarea>
+
+          
+        </div>
+      </section>
+
+      <!-- Subtle frontline guidance note -->
+      
+    </main>
+
+    <!-- Bottom Action Dock -->
+    <footer class="px-5 py-4 bg-canvas/95 backdrop-blur-sm border-t border-divider/60 shrink-0">
+      <button id="save-btn" class="w-full h-13 py-3.5 px-6 rounded-pill bg-clay text-surface-elevated font-bold text-[16px] tracking-tight flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(154,68,45,0.25)] hover:bg-[#853924] active:scale-[0.98] transition-all">
+        <span class="">Save capture</span>
+      </button>
+    </footer>
+
+    <!-- CLIENT PICKER OVERLAY (Preserves note content) -->
+    <div id="client-picker" class="absolute inset-0 bg-carbon/40 z-20 hidden flex-col justify-end transition-opacity duration-200">
+      <div class="w-full bg-canvas rounded-t-sheet border-t border-divider shadow-2xl max-h-[80%] flex flex-col animate-in slide-in-from-bottom duration-200">
+        
+        <div class="px-5 pt-4 pb-3 flex items-center justify-between border-b border-divider shrink-0">
+          <div class="flex items-center gap-2">
+            <h2 class="text-[18px] font-bold text-carbon tracking-tight">Choose client</h2>
+            <span class="text-[13px] text-secondary font-medium">5 assigned</span>
+          </div>
+          <button id="close-picker-btn" class="w-8 h-8 rounded-full flex items-center justify-center text-carbon hover:bg-surface-grouped">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <div class="p-4 border-b border-divider bg-surface-recessed shrink-0">
+          <div class="flex items-center px-3 py-2 bg-surface-elevated rounded-control border border-divider">
+            <span class="material-symbols-outlined text-tertiary text-[18px] mr-2">search</span>
+            <input type="text" placeholder="Search my caseload" class="w-full bg-transparent border-none outline-none text-[15px] text-carbon placeholder:text-tertiary">
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
+          <button class="picker-item w-full p-3.5 bg-surface-recessed rounded-control border border-clay flex items-center justify-between text-left transition-colors" data-name="Jordan M.">
+            <div class="flex items-center gap-2">
+              <span class="text-[16px] font-bold text-carbon">Jordan M.</span>
+              <span class="text-[12px] font-semibold bg-clay-soft text-clay px-2 py-0.5 rounded-full">Current</span>
+            </div>
+            <span class="material-symbols-outlined text-clay text-[18px]">check</span>
+          </button>
+
+          <button class="picker-item w-full p-3.5 bg-surface-elevated hover:bg-surface-recessed active:bg-surface-grouped rounded-control border border-divider/70 flex items-center justify-between text-left transition-colors" data-name="Maya R.">
+            <span class="text-[16px] font-semibold text-carbon">Maya R.</span>
+            <span class="material-symbols-outlined text-tertiary text-[18px]">chevron_right</span>
+          </button>
+
+          <button class="picker-item w-full p-3.5 bg-surface-elevated hover:bg-surface-recessed active:bg-surface-grouped rounded-control border border-divider/70 flex items-center justify-between text-left transition-colors" data-name="Eli T.">
+            <span class="text-[16px] font-semibold text-carbon">Eli T.</span>
+            <span class="material-symbols-outlined text-tertiary text-[18px]">chevron_right</span>
+          </button>
+
+          <button class="picker-item w-full p-3.5 bg-surface-elevated hover:bg-surface-recessed active:bg-surface-grouped rounded-control border border-divider/70 flex items-center justify-between text-left transition-colors" data-name="Noah K.">
+            <span class="text-[16px] font-semibold text-carbon">Noah K.</span>
+            <span class="material-symbols-outlined text-tertiary text-[18px]">chevron_right</span>
+          </button>
+
+          <button class="picker-item w-full p-3.5 bg-surface-elevated hover:bg-surface-recessed active:bg-surface-grouped rounded-control border border-divider/70 flex items-center justify-between text-left transition-colors" data-name="Samira L.">
+            <span class="text-[16px] font-semibold text-carbon">Samira L.</span>
+            <span class="material-symbols-outlined text-tertiary text-[18px]">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function() {
+      const changeClientBtn = document.getElementById('change-client-btn');
+      const closePickerBtn = document.getElementById('close-picker-btn');
+      const clientPicker = document.getElementById('client-picker');
+      const pickerItems = document.querySelectorAll('.picker-item');
+      const saveBtn = document.getElementById('save-btn');
+      const closeBtn = document.getElementById('close-btn');
+
+      changeClientBtn.addEventListener('click', () => {
+        clientPicker.classList.remove('hidden');
+        clientPicker.classList.add('flex');
+      });
+
+      closePickerBtn.addEventListener('click', () => {
+        clientPicker.classList.add('hidden');
+        clientPicker.classList.remove('flex');
+      });
+
+      pickerItems.forEach(item => {
+        item.addEventListener('click', () => {
+          clientPicker.classList.add('hidden');
+          clientPicker.classList.remove('flex');
+        });
+      });
+
+      saveBtn.addEventListener('click', () => {
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Saving…</span>';
+        setTimeout(() => {
+          window.location.hash = 'saved';
+        }, 600);
+      });
+
+      closeBtn.addEventListener('click', () => {
+        history.back();
+      });
+    })();
+  </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <title>Documentation Draft - Note Copied</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: "#F9F9F7",
+            recessed: "#F4F4F2",
+            grouped: "#EEEEEC",
+            elevated: "#FFFFFF",
+            carbon: "#161616",
+            secondary: "#5F6160",
+            tertiary: "#858784",
+            divider: "#E8E8E5",
+            clay: "#9A442D",
+            "soft-clay": "#FFDAD2"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 100%;
+      max-width: 412px;
+      min-height: 100vh;
+      background-color: #F9F9F7;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="antialiased text-carbon">
+  <div class="mobile-frame">
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-surface/90 backdrop-blur-md px-5 pt-4 pb-3 flex items-center justify-between border-b border-divider/60">
+      <div class="flex items-center gap-2.5">
+        <button aria-label="Back" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-carbon hover:bg-grouped active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+        </button>
+        <span class="text-[17px] font-bold text-carbon tracking-tight">Documentation draft</span>
+      </div>
+      <button class="text-[14px] font-semibold text-secondary hover:text-carbon px-2.5 py-1 rounded-full hover:bg-grouped transition-colors">
+        Done
+      </button>
+    </header>
+
+    <!-- Main Content Stream -->
+    <main class="flex-1 px-5 pt-4 pb-12 flex flex-col gap-5">
+      
+      <!-- Top Status Banner -->
+      <div class="flex items-center justify-between">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-grouped text-[13px] font-medium text-secondary">
+          <span class="w-1.5 h-1.5 rounded-full bg-clay"></span>
+          <span class="">AI proposal · Review before use</span>
+        </div>
+        <span class="text-[13px] font-semibold text-tertiary">Progress note</span>
+      </div>
+
+      <!-- Editable Draft Note (Hero Surface) -->
+      <section class="bg-elevated rounded-2xl p-4 sm:p-5 shadow-[0_4px_20px_-4px_rgba(22,22,22,0.05),0_1px_4px_rgba(22,22,22,0.02)] border border-divider flex flex-col gap-3">
+        
+        <div class="outline-none text-[15px] sm:text-[16px] text-carbon leading-relaxed font-normal min-h-[140px]">Worker met with the client following school dismissal. The client reported that transportation issues affected school attendance that morning. Transportation options were discussed, including trying an earlier bus route. Worker agreed to contact the school counsellor to support follow-up planning.</div>
+        <div class="pt-2 border-t border-divider/60 flex items-center justify-between text-[13px] text-tertiary">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[15px] text-clay">shield</span>
+            <span class="">Prepared from protected capture</span>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- Possible Follow-up Section -->
+      <section class="bg-recessed rounded-2xl p-4 border border-divider/80 flex flex-col gap-2.5">
+        <div class="flex items-baseline justify-between">
+          <h2 class="text-[15px] font-bold text-carbon tracking-tight">Possible follow-up</h2>
+          
+        </div>
+        <p class="text-[13px] text-secondary leading-normal">Caseflow noticed a possible commitment in the capture.</p>
+
+        <div class="bg-elevated rounded-xl p-3.5 border border-divider/70 flex flex-col gap-3 shadow-sm">
+          <div class="flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-[20px] text-clay shrink-0 mt-0.5">checklist</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-[15px] font-semibold text-carbon leading-snug">Call school counsellor before end of day</p>
+              <p class="text-[13px] text-secondary mt-0.5">Jordan M. · Today</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-end gap-2 pt-1 border-t border-divider/50">
+            <button class="min-h-[40px] px-3 py-1 rounded-full text-[13px] font-medium text-secondary hover:text-carbon hover:bg-grouped transition-all">Dismiss</button>
+            <button class="min-h-[40px] px-4 py-1.5 rounded-full text-[13px] font-semibold bg-grouped text-carbon hover:bg-divider transition-all flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">add</span>
+              <span class="">Add as task</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- View Original Capture Disclosure -->
+      <section class="border border-divider/80 rounded-xl bg-surface p-3.5 flex items-center justify-between text-secondary hover:text-carbon cursor-pointer transition-colors">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px] text-tertiary">history_edu</span>
+          <span class="text-[14px] font-semibold">View original capture</span>
+        </div>
+        <span class="material-symbols-outlined text-[18px] text-tertiary">expand_more</span>
+      </section>
+
+      <!-- Primary Action: Note Copied State -->
+      <div class="mt-2 pt-2 flex flex-col gap-2">
+        <button class="w-full min-h-[50px] bg-carbon text-white font-bold text-[15px] sm:text-[16px] rounded-full shadow-md flex items-center justify-center gap-2 transition-all">
+          <span class="material-symbols-outlined text-[20px] text-emerald-400">check</span>
+          <span class="">Copy note</span>
+        </button>
+        
+      </div>
+
+      <!-- Lightweight Toast Notification -->
+      <div class="fixed bottom-6 left-5 right-5 max-w-[372px] mx-auto bg-carbon text-white px-4 py-3 rounded-full shadow-2xl flex items-center justify-between animate-in fade-in slide-in-from-bottom-2 duration-200 z-50">
+        <div class="flex items-center gap-2.5">
+          <div class="w-6 h-6 rounded-full bg-clay flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-[15px]">check</span>
+          </div>
+          <span class="text-[14px] font-semibold">Note copied</span>
+        </div>
+        <button class="text-[13px] font-bold text-soft-clay hover:underline pr-1">Dismiss</button>
+      </div>
+
+    </main>
+  </div>
+
+
+
+</body></html>

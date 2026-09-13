@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <title>Add Proposed Task - Caseflow</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: "#F9F9F7",
+            recessed: "#F4F4F2",
+            grouped: "#EEEEEC",
+            elevated: "#FFFFFF",
+            carbon: "#161616",
+            secondary: "#5F6160",
+            tertiary: "#858784",
+            divider: "#E8E8E5",
+            clay: "#9A442D",
+            "soft-clay": "#FFDAD2"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 100%;
+      max-width: 412px;
+      min-height: 100vh;
+      background-color: rgba(22, 22, 22, 0.45);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="antialiased text-carbon">
+  <div class="mobile-frame">
+    <!-- Focused Bottom Sheet for Adding Proposed Task -->
+    <div class="w-full bg-surface rounded-t-[28px] p-6 pb-9 shadow-[0_-12px_36px_rgba(22,22,22,0.2)] border-t border-divider flex flex-col gap-5 animate-in slide-in-from-bottom duration-200">
+      
+      <!-- Drag affordance bar -->
+      <div class="w-10 h-1 rounded-full bg-divider mx-auto -mt-2 mb-1"></div>
+
+      <!-- Sheet Header -->
+      <div class="flex items-center justify-between pb-1">
+        <div>
+          <h1 class="text-[18px] font-bold text-carbon tracking-tight">Add task</h1>
+          
+        </div>
+        <button aria-label="Cancel" class="w-9 h-9 rounded-full bg-grouped text-carbon flex items-center justify-center hover:bg-divider transition-colors">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <!-- Form Elements (Prefilled, Editable) -->
+      <div class="flex flex-col gap-4">
+        
+        <!-- Client Context -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[13px] font-bold text-tertiary uppercase tracking-wider">Client</label>
+          <div class="bg-elevated rounded-xl px-4 py-3 border border-divider flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-tertiary">person</span>
+              <span class="text-[15px] font-semibold text-carbon">Jordan M.</span>
+            </div>
+            <span class="text-[12px] font-medium text-tertiary bg-recessed px-2 py-0.5 rounded-full">Youth Outreach</span>
+          </div>
+        </div>
+
+        <!-- Task Title -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[13px] font-bold text-tertiary uppercase tracking-wider">Task</label>
+          <div class="bg-elevated rounded-xl p-3.5 border border-divider focus-within:border-clay focus-within:ring-1 focus-within:ring-clay/30 transition-all">
+            <input type="text" value="Call school counsellor" class="w-full bg-transparent outline-none text-[15px] font-semibold text-carbon">
+          </div>
+        </div>
+
+        <!-- Due Date -->
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[13px] font-bold text-tertiary uppercase tracking-wider">Due date</label>
+          <div class="bg-elevated rounded-xl px-4 py-3 border border-divider flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-clay">calendar_today</span>
+              <span class="text-[15px] font-semibold text-carbon">Today</span>
+            </div>
+            <span class="material-symbols-outlined text-[18px] text-tertiary">arrow_drop_down</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3 pt-2">
+        <button class="flex-1 min-h-[48px] rounded-full text-[15px] font-semibold text-secondary hover:text-carbon hover:bg-grouped active:scale-95 transition-all">
+          Cancel
+        </button>
+        <button class="flex-[1.5] min-h-[48px] bg-carbon hover:bg-black active:scale-95 text-white font-bold text-[15px] rounded-full shadow-md flex items-center justify-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+          <span class="">Add task</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Caseflow — Privacy Review</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clay: {
+              DEFAULT: '#9A442D',
+              dark: '#823722',
+              light: '#F8ECE8',
+              surface: '#FAF0EB',
+              border: '#E8D4CC'
+            },
+            carbon: {
+              DEFAULT: '#161616',
+              muted: '#686866',
+              subtle: '#8F8F8D',
+              border: '#EBEAE6'
+            },
+            canvas: '#F9F9F7'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            subtle: '0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02)',
+            card: '0 2px 8px -2px rgba(22, 22, 22, 0.04), 0 1px 2px -1px rgba(22, 22, 22, 0.02)'
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-typography">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #121212;
+      color: #161616;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-0 sm:p-6 md:p-8">
+<!-- BEGIN: PhoneContainer -->
+<!-- Outer shell simulating a premium mobile device matching Screen 1's canvas style -->
+<main class="w-full max-w-[400px] min-h-screen sm:min-h-[844px] bg-canvas flex flex-col justify-between overflow-hidden sm:rounded-[36px] shadow-2xl relative border border-[#262626]/20">
+<!-- BEGIN: TopBar -->
+<header class="px-5 pt-6 pb-3 flex items-center justify-between border-b border-carbon-border/50 bg-canvas/90 backdrop-blur-md sticky top-0 z-20">
+<!-- Back Link -->
+<button aria-label="Go back" class="flex items-center gap-1.5 text-[15px] font-semibold text-carbon hover:text-clay transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Back</span>
+</button>
+<!-- Center Title -->
+<h1 class="text-[12px] font-bold tracking-[0.14em] uppercase text-carbon/60 translate-x-[-12px]">
+        Privacy Review
+      </h1>
+<div aria-hidden="true" class="w-5"></div>
+</header>
+<!-- END: TopBar -->
+<!-- BEGIN: ScrollableContent -->
+<div class="flex-1 px-5 py-5 space-y-6 overflow-y-auto">
+<!-- BEGIN: TrustHeader -->
+<section class="space-y-3" data-purpose="trust-indicator">
+<!-- Shield Emblem Icon -->
+<div class="w-11 h-11 rounded-2xl bg-clay-light flex items-center justify-center border border-clay-border/60">
+<svg class="w-6 h-6 text-clay stroke-[1.9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="space-y-1.5">
+<h2 class="text-[23px] font-bold leading-tight text-carbon tracking-tight">
+            Private details protected
+          </h2>
+<p class="text-[14px] leading-relaxed text-carbon-muted">
+            Review the protected version before it is used to prepare your documentation draft.
+          </p>
+</div>
+</section>
+<!-- END: TrustHeader -->
+<!-- BEGIN: ProtectedVersionCard -->
+<section class="space-y-2" data-purpose="protected-text-preview">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold tracking-[0.12em] uppercase text-carbon/50">
+            Protected Version
+          </span>
+
+</div>
+<div class="bg-white rounded-2xl p-4 sm:p-5 border border-carbon-border shadow-card space-y-4">
+<!-- Text Body with Token Pills -->
+<p class="text-[15px] leading-[1.65] text-carbon font-normal">
+            Met <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-clay-surface border border-clay-border text-clay font-semibold text-[13px] tracking-wide align-baseline mx-0.5">[CLIENT]</span> after school. <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-clay-surface border border-clay-border text-clay font-semibold text-[13px] tracking-wide align-baseline mx-0.5">[CLIENT]</span> said the bus didn’t arrive this morning. We talked about trying the earlier route tomorrow. I said I would call <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-clay-surface border border-clay-border text-clay font-semibold text-[13px] tracking-wide align-baseline mx-0.5">[SCHOOL CONTACT]</span> before the end of the day.
+          </p>
+<!-- Divider & Guarantee Subline -->
+<div class="pt-3 border-t border-carbon-border/70 flex items-start gap-2.5 text-carbon-muted text-[13px] leading-snug">
+<svg class="w-4 h-4 text-clay shrink-0 mt-0.5 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Only the protected version will be used to prepare the draft.</span>
+</div>
+</div>
+</section>
+<!-- END: ProtectedVersionCard -->
+<!-- BEGIN: ExpandedProtectedDetails -->
+<section class="bg-white rounded-2xl border border-carbon-border shadow-card overflow-hidden transition-all duration-200" data-purpose="privacy-details-disclosure">
+<!-- Accordion Header (Open state) -->
+<button aria-expanded="true" class="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-canvas/40 transition-colors" type="button">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+<span class="text-[14px] font-bold text-carbon">3 private details protected</span>
+</div>
+<div class="flex items-center gap-1.5 text-carbon-muted">
+<span class="text-[13px] font-semibold text-clay">Review details</span>
+<!-- Upward Chevron indicating expanded/open state -->
+<svg class="w-4 h-4 text-clay stroke-[2.2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</button>
+<!-- Expanded Details Content Panel -->
+<div class="px-4 pb-4 pt-2 border-t border-carbon-border/60 bg-canvas/30 space-y-3.5">
+<!-- Column Labels -->
+<div class="flex items-center justify-between text-[12px] font-medium text-carbon-subtle px-1">
+<span class="">Original context</span>
+<span class="">Protected token</span>
+</div>
+<!-- Mapping Rows List -->
+<div class="space-y-2">
+<!-- Row 1: Jordan M. -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-carbon-border/80">
+<div class="flex flex-col">
+<span class="text-[14px] font-bold text-carbon leading-snug">Jordan M.</span>
+<span class="text-[12px] text-carbon-muted">2 references detected</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-carbon-subtle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-clay-surface border border-clay-border text-clay font-bold text-[12px] tracking-wide">
+                  [CLIENT]
+                </span>
+</div>
+</div>
+<!-- Row 2: Ms. Patel -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-white border border-carbon-border/80">
+<div class="flex flex-col">
+<span class="text-[14px] font-bold text-carbon leading-snug">Ms. Patel</span>
+<span class="text-[12px] text-carbon-muted">1 reference detected</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-3.5 h-3.5 text-carbon-subtle" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md bg-clay-surface border border-clay-border text-clay font-bold text-[12px] tracking-wide">
+                  [SCHOOL CONTACT]
+                </span>
+</div>
+</div>
+</div>
+<!-- Clarification Note -->
+<p class="text-[12px] text-carbon-muted leading-relaxed pt-1 px-1">
+            Only the protected replacements are used to prepare the draft.
+          </p>
+</div>
+</section>
+<!-- END: ExpandedProtectedDetails -->
+</div>
+<!-- END: ScrollableContent -->
+<!-- BEGIN: BottomActionArea -->
+<footer class="p-5 bg-canvas border-t border-carbon-border/50 sticky bottom-0 z-20">
+<!-- Primary Action: Full-width Clay Pill Button -->
+<button aria-label="Continue to draft documentation" class="w-full h-[50px] bg-clay hover:bg-clay-dark active:scale-[0.99] text-white font-bold text-[16px] rounded-full shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer" type="button">
+<span class="">Continue to draft</span>
+<svg class="w-4 h-4 stroke-[2.4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</footer>
+<!-- END: BottomActionArea -->
+</main>
+<!-- END: PhoneContainer -->
+
+
+</body></html>

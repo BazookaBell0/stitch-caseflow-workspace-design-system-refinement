@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Tasks - Caseflow</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#F9F9F7",
+            "surface-low": "#F4F4F2",
+            "surface-card": "#FFFFFF",
+            "surface-dim": "#EEEEEC",
+            "surface-border": "#E8E8E5",
+            "primary": "#161616",
+            "secondary-text": "#5F6160",
+            "tertiary-text": "#858784",
+            "clay": "#9A442D",
+            "clay-light": "#FFDAD2"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "card": "18px"
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #F9F9F7;
+        color: #161616;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body { overscroll-behavior-y: none; }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-surface font-sans text-primary flex flex-col min-h-screen antialiased selection:bg-clay selection:text-white">
+<!-- Mobile Viewport Container: ~390-420px centered container -->
+<div class="w-full max-w-[420px] mx-auto min-h-screen flex flex-col relative bg-surface shadow-[0_0_50px_rgba(0,0,0,0.03)] sm:border-x sm:border-surface-border">
+<!-- Top App Bar (Restrained & Mobile Aligned) -->
+<header class="sticky top-0 w-full z-40 pt-safe bg-surface/90 backdrop-blur-md border-b border-surface-border/60">
+<div class="h-14 px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-[18px] tracking-tight text-primary">Caseflow</span>
+<button class="h-8 px-2.5 rounded-full bg-surface-dim hover:bg-surface-border transition-colors flex items-center gap-0.5 text-[12px] font-semibold text-primary">
+<span class="">Youth Outreach</span>
+<span class="material-symbols-outlined text-[16px] text-secondary-text">arrow_drop_down</span>
+</button>
+</div>
+<button aria-label="Profile" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white min-h-[44px] min-w-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined text-[17px]">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full px-4 pt-4 pb-36 flex flex-col space-y-5 pb-safe">
+<!-- Header: Confident Editorial Title + Controls -->
+<div class="flex items-start justify-between gap-2 pt-1">
+<div class="flex flex-col space-y-0.5">
+<h1 class="text-[28px] sm:text-[30px] font-extrabold tracking-tight text-primary leading-tight">Tasks</h1>
+<p class="text-[14px] text-secondary-text font-medium" id="task-counter">6 open commitments</p>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<!-- Filter Control -->
+<button aria-label="Filter tasks" class="h-9 px-3 rounded-full bg-surface-dim hover:bg-surface-border transition-colors flex items-center gap-1.5 text-[13px] font-semibold text-primary min-h-[36px]">
+<span class="material-symbols-outlined text-[16px] text-secondary-text">tune</span>
+<span class="">Filter</span>
+</button>
+<!-- + Add Task Button -->
+<button class="h-9 px-3.5 rounded-full bg-primary hover:bg-primary/90 text-white font-semibold text-[13px] flex items-center gap-1 min-h-[36px] active:scale-95 transition-transform shadow-xs" id="open-add-modal">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="">Add task</span>
+</button>
+</div>
+</div>
+<!-- Undo Toast -->
+<div class="hidden transition-all duration-300 ease-out bg-primary text-white px-4 py-2.5 rounded-full shadow-lg flex items-center justify-between z-30" id="undoToast">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-clay-light">check_circle</span>
+<span class="text-[13px] font-medium" id="toastMessage">Commitment completed</span>
+</div>
+<button class="text-[12px] font-bold text-clay-light uppercase tracking-wider px-2 py-1 min-h-[36px] flex items-center active:scale-95 transition-transform" id="undoBtn">Undo</button>
+</div>
+<!-- Due-State Groups (Paper-List Reference) -->
+<div class="flex flex-col space-y-5">
+<!-- Section: OVERDUE -->
+<section class="flex flex-col space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h2 class="text-[14px] font-bold text-clay tracking-tight uppercase tracking-wider">Overdue</h2>
+<span class="text-[13px] font-semibold text-clay">1 action needed</span>
+</div>
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_2px_8px_-2px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<!-- Task Item -->
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-1">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Call school counsellor</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Jordan M.</span>
+<span class="text-tertiary-text">·</span>
+<span class="font-semibold text-clay">Due yesterday</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section: TODAY -->
+<section class="flex flex-col space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h2 class="text-[14px] font-bold text-primary tracking-tight uppercase tracking-wider">Today</h2>
+<span class="text-[13px] font-medium text-secondary-text">2 actions</span>
+</div>
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_2px_8px_-2px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-2">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Confirm transportation for Friday</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Maya R.</span>
+<span class="text-tertiary-text">·</span>
+<span class="font-medium text-secondary-text">Today</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-3">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Follow up about transportation</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Jordan M.</span>
+<span class="text-tertiary-text">·</span>
+<span class="font-medium text-secondary-text">Today</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section: UPCOMING -->
+<section class="flex flex-col space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h2 class="text-[14px] font-bold text-secondary-text tracking-tight uppercase tracking-wider">Upcoming</h2>
+<span class="text-[13px] font-medium text-secondary-text">2 actions</span>
+</div>
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_2px_8px_-2px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-4">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Check application status</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Eli T.</span>
+<span class="text-tertiary-text">·</span>
+<span class="font-medium text-secondary-text">Tomorrow</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-5">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Follow up on housing paperwork</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Noah K.</span>
+<span class="text-tertiary-text">·</span>
+<span class="font-medium text-secondary-text">Friday</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section: NO DATE -->
+<section class="flex flex-col space-y-2">
+<div class="px-1 flex items-center justify-between">
+<h2 class="text-[14px] font-bold text-secondary-text tracking-tight uppercase tracking-wider">No Date</h2>
+<span class="text-[13px] font-medium text-secondary-text">1 action</span>
+</div>
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_2px_8px_-2px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<div class="task-row min-h-[58px] p-3.5 hover:bg-surface-low/40 transition-colors flex items-center gap-3" data-task-id="t-6">
+<button aria-label="Mark task complete" class="task-check w-[22px] h-[22px] rounded-[6px] border-2 border-primary flex items-center justify-center text-transparent hover:border-clay hover:bg-clay/5 transition-all shrink-0 min-h-[44px] min-w-[44px]">
+<span class="material-symbols-outlined text-[16px] font-black">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-text text-[15px] sm:text-[16px] font-bold text-primary block leading-snug">Check in about paperwork</span>
+<div class="flex items-center gap-1.5 mt-0.5 text-[13px]">
+<span class="font-medium text-primary">Eli T.</span>
+<span class="text-tertiary-text">·</span>
+<span class="text-tertiary-text">No date</span>
+</div>
+</div>
+<button aria-label="Options" class="w-8 h-8 min-h-[44px] min-w-[44px] flex items-center justify-center text-tertiary-text hover:text-primary transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Clean ending without scores, completeness meters, or Caseload Integrity cards -->
+</main>
+<!-- Floating Bottom Navigation Dock -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 pb-safe pointer-events-none mb-3">
+<div class="max-w-[420px] mx-auto px-4">
+<div class="pointer-events-auto h-16 bg-surface-card/95 backdrop-blur-xl rounded-full border border-surface-border shadow-[0_12px_32px_-6px_rgba(22,22,22,0.12),0_4px_12px_-2px_rgba(22,22,22,0.04)] px-3 flex items-center justify-between">
+<!-- Destination: Today -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-secondary-text hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+<span class="text-[12px] font-semibold mt-0.5">Today</span>
+</a>
+<!-- Destination: Caseload -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-secondary-text hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_shared</span>
+<span class="text-[12px] font-semibold mt-0.5">Caseload</span>
+</a>
+<!-- Global Central Clay Capture Action (#9A442D) -->
+<div class="flex items-center justify-center px-1">
+<button aria-label="Global Capture" class="w-12 h-12 rounded-full bg-clay text-white shadow-[0_4px_14px_rgba(154,68,45,0.36)] flex items-center justify-center active:scale-95 transition-transform hover:opacity-95 min-h-[48px] min-w-[48px]">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+<!-- Destination: Tasks (Active) -->
+<a aria-current="page" class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center transition-colors text-primary font-bold" href="#">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span class="text-[12px] font-bold mt-0.5">Tasks</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Clean Add Task Modal Sheet -->
+<div class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-end justify-center p-0 hidden transition-opacity" id="add-task-modal">
+<div class="w-full max-w-[420px] bg-surface-card rounded-t-[24px] border-t border-x border-surface-border p-5 shadow-2xl flex flex-col space-y-4 animate-in slide-in-from-bottom duration-200">
+<div class="flex items-center justify-between pb-2 border-b border-surface-border">
+<h3 class="text-[17px] font-extrabold text-primary tracking-tight">Add task</h3>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-secondary-text hover:text-primary min-h-[44px] min-w-[44px]" id="close-add-modal">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col space-y-3">
+<!-- Client Context -->
+<div>
+<label class="block text-[11px] font-bold text-secondary-text uppercase tracking-wider mb-1">Client</label>
+<select class="w-full bg-surface-low border border-surface-border rounded-xl px-3 py-2.5 text-[14px] text-primary font-medium focus:outline-none focus:border-primary" id="modal-client-select">
+<option value="Jordan M.">Jordan M.</option>
+<option value="Maya R.">Maya R.</option>
+<option value="Eli T.">Eli T.</option>
+<option value="Noah K.">Noah K.</option>
+<option value="Samira L.">Samira L.</option>
+</select>
+</div>
+<!-- Task Description -->
+<div>
+<label class="block text-[11px] font-bold text-secondary-text uppercase tracking-wider mb-1">Task description</label>
+<input class="w-full bg-surface-low border border-surface-border rounded-xl px-3 py-2.5 text-[14px] text-primary placeholder:text-tertiary-text focus:outline-none focus:border-primary" id="modal-task-desc" placeholder="e.g. Call clinic regarding appointment" type="text">
+</div>
+<!-- Optional Due Date -->
+<div>
+<label class="block text-[11px] font-bold text-secondary-text uppercase tracking-wider mb-1">Due date (optional)</label>
+<input class="w-full bg-surface-low border border-surface-border rounded-xl px-3 py-2.5 text-[14px] text-primary focus:outline-none focus:border-primary" id="modal-task-date" type="date">
+</div>
+</div>
+<div class="pt-2 flex justify-end gap-2">
+<button class="min-h-[44px] px-4 py-2 rounded-full text-secondary-text font-semibold text-[13px] hover:bg-surface-low transition-colors" id="cancel-add-btn">Cancel</button>
+<button class="min-h-[44px] px-5 py-2 rounded-full bg-primary text-white font-semibold text-[13px] hover:bg-primary/90 transition-colors" id="save-add-btn">Save task</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    (function() {
+      let openTasks = 6;
+      let lastCompleted = null;
+      let toastTimeout = null;
+
+      const undoToast = document.getElementById('undoToast');
+      const undoBtn = document.getElementById('undoBtn');
+      const taskCounter = document.getElementById('task-counter');
+      const checks = document.querySelectorAll('.task-check');
+
+      function updateCounter() {
+        taskCounter.textContent = `${openTasks} open commitment${openTasks === 1 ? '' : 's'}`;
+      }
+
+      checks.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const row = this.closest('.task-row');
+          const text = row.querySelector('.task-text');
+
+          const isCompleted = row.classList.contains('opacity-40');
+          if (!isCompleted) {
+            row.classList.add('opacity-40');
+            text.classList.add('line-through', 'text-secondary-text');
+            this.classList.replace('border-primary', 'border-clay');
+            this.classList.replace('text-transparent', 'text-white');
+            this.classList.add('bg-clay');
+
+            openTasks = Math.max(0, openTasks - 1);
+            updateCounter();
+
+            lastCompleted = { row, text, btn: this };
+            undoToast.classList.remove('hidden');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+              undoToast.classList.add('hidden');
+            }, 4000);
+          }
+        });
+      });
+
+      if (undoBtn) {
+        undoBtn.addEventListener('click', () => {
+          if (!lastCompleted) return;
+          lastCompleted.row.classList.remove('opacity-40');
+          lastCompleted.text.classList.remove('line-through', 'text-secondary-text');
+          lastCompleted.btn.classList.replace('border-clay', 'border-primary');
+          lastCompleted.btn.classList.replace('text-white', 'text-transparent');
+          lastCompleted.btn.classList.remove('bg-clay');
+
+          openTasks++;
+          updateCounter();
+          undoToast.classList.add('hidden');
+          clearTimeout(toastTimeout);
+          lastCompleted = null;
+        });
+      }
+
+      // Add task modal sheet logic
+      const modal = document.getElementById('add-task-modal');
+      const openBtn = document.getElementById('open-add-modal');
+      const closeBtn = document.getElementById('close-add-modal');
+      const cancelBtn = document.getElementById('cancel-add-btn');
+      const saveBtn = document.getElementById('save-add-btn');
+
+      function toggleModal(show) {
+        if (show) modal.classList.remove('hidden');
+        else modal.classList.add('hidden');
+      }
+
+      if (openBtn) openBtn.addEventListener('click', () => toggleModal(true));
+      if (closeBtn) closeBtn.addEventListener('click', () => toggleModal(false));
+      if (cancelBtn) cancelBtn.addEventListener('click', () => toggleModal(false));
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          const desc = document.getElementById('modal-task-desc').value.trim();
+          if (desc) {
+            openTasks++;
+            updateCounter();
+            document.getElementById('modal-task-desc').value = '';
+          }
+          toggleModal(false);
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

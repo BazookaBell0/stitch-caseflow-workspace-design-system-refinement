@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Recent — Jordan M. — Caseflow</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9f7",
+            "surface-dim": "#dadad8",
+            "surface-bright": "#f9f9f7",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "surface-container-highest": "#e2e3e1",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#444748",
+            "inverse-surface": "#2f3130",
+            "inverse-on-surface": "#f1f1ef",
+            "outline": "#747878",
+            "outline-variant": "#c4c7c7",
+            "primary": "#000000",
+            "on-primary": "#ffffff",
+            "primary-container": "#1c1b1b",
+            "on-primary-container": "#858383",
+            "secondary": "#9a442d",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fc9174",
+            "on-secondary-container": "#742814",
+            "tertiary-fixed": "#ffddb2",
+            "on-tertiary-fixed": "#291800"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f7;
+        color: #1a1c1b;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-surface font-sans text-on-surface flex flex-col min-h-screen">
+  <!-- Focused Contextual Chrome Header -->
+  <header class="fixed top-0 w-full z-40 pt-safe bg-surface/90 backdrop-blur-xl border-b border-surface-container">
+    <div class="max-w-md mx-auto h-16 px-5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <a href="#client-overview" class="min-h-[44px] min-w-[44px] -ml-2 flex items-center justify-center text-on-surface hover:text-on-surface-variant transition-colors" aria-label="Back to Jordan M.">
+          <span class="material-symbols-outlined text-[22px]">arrow_back</span>
+        </a>
+        <div class="flex items-center gap-1.5">
+          <span class="text-[17px] font-bold text-primary tracking-tight">Jordan M.</span>
+        </div>
+      </div>
+      <span class="text-[12px] font-semibold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Youth Outreach</span>
+    </div>
+  </header>
+
+  <!-- Main Working-Memory Stream -->
+  <main class="flex-1 w-full max-w-md mx-auto pt-20 pb-28 px-5">
+    <!-- Screen Title & Quiet Orientation -->
+    <div class="pt-2 pb-5">
+      <h1 class="text-[28px] font-extrabold text-primary tracking-tight leading-tight">Recent</h1>
+      <p class="text-[14px] text-on-surface-variant mt-0.5">Working notes and recent captures</p>
+    </div>
+
+    <!-- Paper-Style Chronological Feed (Grouped by Day, Not In Individual Heavy Cards) -->
+    <div class="space-y-6">
+      
+      <!-- DAY GROUP: TODAY -->
+      <section class="space-y-3">
+        <div class="flex items-center gap-2 pt-1">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <h2 class="text-[13px] font-bold uppercase tracking-wider text-on-surface-variant">Today</h2>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_-2px_rgba(26,28,27,0.03)] divide-y divide-surface-container">
+          <!-- Item 1: Afternoon capture (Has draft ready state) -->
+          <article class="py-3.5 first:pt-1 last:pb-1 cursor-pointer group active:opacity-75 transition-opacity" role="button" tabindex="0">
+            <div class="flex items-center justify-between text-[13px] text-outline font-medium mb-1.5">
+              <span>2:40 PM</span>
+              <span class="text-secondary font-semibold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]">edit_note</span>
+                Draft ready
+              </span>
+            </div>
+            <p class="text-[15px] leading-relaxed text-on-surface font-normal">
+              Met Jordan after school. He said the bus didn’t arrive this morning. We talked about trying the earlier route tomorrow. I said I would call the school counsellor before the end of the day.
+            </p>
+          </article>
+
+          <!-- Item 2: Morning capture (Ordinary working memory) -->
+          <article class="py-3.5 first:pt-1 last:pb-1 cursor-pointer group active:opacity-75 transition-opacity" role="button" tabindex="0">
+            <div class="flex items-center justify-between text-[13px] text-outline font-medium mb-1.5">
+              <span>10:15 AM</span>
+            </div>
+            <p class="text-[15px] leading-relaxed text-on-surface font-normal">
+              Checked in about school paperwork. Jordan said one form still needs to be returned by guardian before Thursday’s registration block.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- DAY GROUP: YESTERDAY -->
+      <section class="space-y-3">
+        <div class="flex items-center gap-2 pt-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+          <h2 class="text-[13px] font-bold uppercase tracking-wider text-on-surface-variant">Yesterday</h2>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_-2px_rgba(26,28,27,0.03)] divide-y divide-surface-container">
+          <!-- Item 3: Yesterday Afternoon (To document queue state) -->
+          <article class="py-3.5 first:pt-1 last:pb-1 cursor-pointer group active:opacity-75 transition-opacity" role="button" tabindex="0">
+            <div class="flex items-center justify-between text-[13px] text-outline font-medium mb-1.5">
+              <span>4:05 PM</span>
+              <span class="text-on-surface-variant font-medium flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px] text-outline">schedule</span>
+                To document
+              </span>
+            </div>
+            <p class="text-[15px] leading-relaxed text-on-surface font-normal">
+              Jordan messaged that transportation was arranged for tomorrow morning with his older cousin. Confirmed he has transit tokens as backup.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- DAY GROUP: MONDAY -->
+      <section class="space-y-3">
+        <div class="flex items-center gap-2 pt-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+          <h2 class="text-[13px] font-bold uppercase tracking-wider text-on-surface-variant">Monday, Oct 22</h2>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_4px_16px_-2px_rgba(26,28,27,0.03)] divide-y divide-surface-container">
+          <!-- Item 4: Monday morning (Ordinary working memory) -->
+          <article class="py-3.5 first:pt-1 last:pb-1 cursor-pointer group active:opacity-75 transition-opacity" role="button" tabindex="0">
+            <div class="flex items-center justify-between text-[13px] text-outline font-medium mb-1.5">
+              <span>11:30 AM</span>
+            </div>
+            <p class="text-[15px] leading-relaxed text-on-surface font-normal">
+              Spoke about school attendance and transportation options for the week. Jordan feels confident about his math class schedule if morning arrivals remain on time.
+            </p>
+          </article>
+
+          <!-- Item 5: Monday early note (Ordinary working memory) -->
+          <article class="py-3.5 first:pt-1 last:pb-1 cursor-pointer group active:opacity-75 transition-opacity" role="button" tabindex="0">
+            <div class="flex items-center justify-between text-[13px] text-outline font-medium mb-1.5">
+              <span>8:45 AM</span>
+            </div>
+            <p class="text-[15px] leading-relaxed text-on-surface font-normal">
+              Quick check-in with attendance office. Verified Jordan was marked present for first period.
+            </p>
+          </article>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Quiet History Window Limiter -->
+    <div class="pt-6 pb-2 text-center">
+      <button class="min-h-[44px] px-4 py-2 rounded-full bg-surface-container text-on-surface-variant text-[13px] font-semibold hover:text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+        Show older activity
+      </button>
+    </div>
+  </main>
+
+  <!-- Locked Bottom Navigation (With Caseload marked contextual root and Capture active) -->
+  <nav class="fixed bottom-0 w-full z-40 pb-safe px-5 pointer-events-none mb-3" data-active-classes="text-primary font-bold">
+    <div class="max-w-md mx-auto pointer-events-auto h-16 bg-surface-container-lowest/90 backdrop-blur-xl rounded-full shadow-[0_16px_36px_-6px_rgba(26,28,27,0.08),0_4px_12px_-2px_rgba(26,28,27,0.03)] px-4 flex items-center justify-between border border-surface-container/60">
+      <a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+        <span class="material-symbols-outlined text-[22px]">notifications_active</span>
+        <span class="text-[11px] font-semibold mt-0.5">Today</span>
+      </a>
+      <a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center text-primary font-bold transition-colors" href="#">
+        <span class="material-symbols-outlined text-[22px]">folder_shared</span>
+        <span class="text-[11px] font-bold mt-0.5">Caseload</span>
+      </a>
+      <!-- Contextual Quick Capture Scoped to Jordan M. -->
+      <div class="flex items-center justify-center px-1">
+        <a aria-label="Quick capture for Jordan M." class="min-h-[44px] min-w-[44px] w-12 h-12 rounded-full bg-secondary text-on-secondary shadow-[0_6px_16px_rgba(154,68,45,0.28)] flex items-center justify-center active:scale-95 transition-transform" href="#">
+          <span class="material-symbols-outlined text-[24px]">add</span>
+        </a>
+      </div>
+      <a class="min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+        <span class="material-symbols-outlined text-[22px]">checklist</span>
+        <span class="text-[11px] font-semibold mt-0.5">Tasks</span>
+      </a>
+    </div>
+  </nav>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+  <title>To Document — Caseflow</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F9F9F7',
+            surface: {
+              recessed: '#F4F4F2',
+              grouped: '#EEEEEC',
+              elevated: '#FFFFFF',
+              high: '#E8E8E6',
+              dim: '#DADAD8',
+            },
+            carbon: '#161616',
+            secondaryText: '#5F6160',
+            tertiaryText: '#858784',
+            divider: '#E8E8E5',
+            clay: {
+              DEFAULT: '#9A442D',
+              soft: '#FFDAD2',
+              dark: '#742814',
+            },
+            amber: {
+              DEFAULT: '#EBB15B',
+              soft: '#FFDDB2',
+              dark: '#624000',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F9F9F7;
+      color: #161616;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-canvas flex flex-col justify-start items-center p-0 m-0">
+  <div class="w-full max-w-[430px] min-h-screen bg-canvas flex flex-col relative pb-10">
+    
+    <!-- Top Focused Header (No bottom nav) -->
+    <header class="w-full pt-12 pb-4 px-5 flex items-center justify-between sticky top-0 bg-canvas/90 backdrop-blur-md z-20 border-b border-divider/60">
+      <div class="flex items-center gap-2">
+        <a href="#today" class="min-w-[44px] min-h-[44px] -ml-2 rounded-full flex items-center justify-center text-carbon hover:bg-surface-recessed active:scale-95 transition-all" aria-label="Back to Today">
+          <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+        </a>
+        <span class="text-[14px] font-semibold text-secondaryText uppercase tracking-wider">Today</span>
+      </div>
+      <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-grouped text-carbon text-[13px] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-clay"></span>
+        <span class="">4 items</span>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 px-5 pt-4 flex flex-col gap-6">
+      
+      <!-- Title & Quiet Subtitle -->
+      <div class="flex flex-col gap-1">
+        <h1 class="text-[28px] font-extrabold text-carbon tracking-tight leading-tight">To document</h1>
+        <p class="text-[14px] font-normal text-secondaryText leading-relaxed">Interactions you still want to finish documenting.</p>
+      </div>
+
+      <!-- GROUP 1: Copied — confirm when finished (Needs final confirmation) -->
+      <section class="flex flex-col gap-2">
+        <div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-DEFAULT"></span>
+            <h2 class="text-[12px] font-bold uppercase tracking-wider text-secondaryText">Copied — confirm when finished</h2>
+          </div>
+          <span class="text-[11px] font-semibold text-tertiaryText">1 interaction</span>
+        </div>
+
+        <div class="bg-surface-elevated rounded-2xl p-4 shadow-[0_4px_20px_-4px_rgba(26,28,27,0.04)] border border-divider/70 flex flex-col gap-3">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-[16px] font-bold text-carbon">Noah K.</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-surface-grouped text-secondaryText">Note copied</span>
+              </div>
+              <span class="text-[14px] font-medium text-secondaryText mt-0.5">Paperwork follow-up</span>
+              <span class="text-[13px] text-tertiaryText mt-1">Monday · 3:05 PM</span>
+            </div>
+            <a href="#draft" class="min-h-[36px] px-3 rounded-full bg-surface-recessed text-carbon text-[13px] font-semibold flex items-center justify-center hover:bg-surface-grouped active:scale-95 transition-all shrink-0">
+              Open draft
+            </a>
+          </div>
+          <div class="h-[1px] bg-divider/60 w-full"></div>
+          <div class="flex items-center justify-between pt-0.5">
+            <span class="text-[13px] text-tertiaryText">Finished in official system?</span>
+            <button class="min-h-[42px] px-4 rounded-full bg-clay text-white text-[13px] font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span class="">Mark documented</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- GROUP 2: Draft ready (Draft already prepared, ready to review/copy) -->
+      <section class="flex flex-col gap-2"><div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-clay"></span>
+            <h2 class="text-[12px] font-bold uppercase tracking-wider text-secondaryText">Draft ready</h2>
+          </div>
+          <span class="text-[11px] font-semibold text-tertiaryText">2 interactions</span>
+        </div>
+
+        <div class="bg-surface-elevated rounded-2xl shadow-[0_4px_20px_-4px_rgba(26,28,27,0.04)] border border-divider/70 divide-y divide-divider/70 overflow-hidden">
+          <!-- Row 1: Jordan M. -->
+          <div class="p-4 flex items-center justify-between gap-3 hover:bg-surface-recessed/50 transition-colors">
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-[16px] font-bold text-carbon">Jordan M.</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-clay-soft text-clay-dark">Draft ready</span>
+              </div>
+              <span class="text-[14px] font-medium text-secondaryText mt-0.5">After-school check-in</span>
+              <span class="text-[13px] text-tertiaryText mt-1">Today · 2:40 PM</span>
+            </div>
+            <button class="min-h-[44px] px-4 rounded-full bg-surface-recessed hover:bg-surface-grouped text-carbon text-[13px] font-bold flex items-center gap-1 shrink-0 active:scale-95 transition-all border border-divider/80">
+              <span class="">Review draft</span>
+              <span class="material-symbols-outlined text-[16px] text-clay">arrow_forward</span>
+            </button>
+          </div>
+
+          <!-- Row 2: Eli T. -->
+          <div class="p-4 flex items-center justify-between gap-3 hover:bg-surface-recessed/50 transition-colors">
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-[16px] font-bold text-carbon">Eli T.</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-clay-soft text-clay-dark">Draft ready</span>
+              </div>
+              <span class="text-[14px] font-medium text-secondaryText mt-0.5">Application follow-up</span>
+              <span class="text-[13px] text-tertiaryText mt-1">Yesterday · 11:20 AM</span>
+            </div>
+            <button class="min-h-[44px] px-4 rounded-full bg-surface-recessed hover:bg-surface-grouped text-carbon text-[13px] font-bold flex items-center gap-1 shrink-0 active:scale-95 transition-all border border-divider/80">
+              <span class="">Review draft</span>
+              <span class="material-symbols-outlined text-[16px] text-clay">arrow_forward</span>
+            </button>
+          </div>
+        </div></section>
+
+      <!-- GROUP 3: Needs drafting (Raw Quick Captures saved, ready to begin draft) -->
+      <section class="flex flex-col gap-2"><div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-surface-dim"></span>
+            <h2 class="text-[12px] font-bold uppercase tracking-wider text-secondaryText">Needs drafting</h2>
+          </div>
+          <span class="text-[11px] font-semibold text-tertiaryText">1 interaction</span>
+        </div>
+
+        <div class="bg-surface-elevated rounded-2xl shadow-[0_4px_20px_-4px_rgba(26,28,27,0.04)] border border-divider/70 overflow-hidden">
+          <!-- Jordan M. Transportation message -->
+          <div class="p-4 flex items-center justify-between gap-3 hover:bg-surface-recessed/50 transition-colors">
+            <div class="flex flex-col min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-[16px] font-bold text-carbon">Jordan M.</span>
+                <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-surface-grouped text-secondaryText">Needs drafting</span>
+              </div>
+              <span class="text-[14px] font-medium text-secondaryText mt-0.5">Transportation message</span>
+              <span class="text-[13px] text-tertiaryText mt-1">Yesterday · 4:05 PM</span>
+            </div>
+            <button class="min-h-[44px] px-4 rounded-full bg-clay text-white text-[13px] font-bold flex items-center gap-1 shrink-0 shadow-sm active:scale-95 transition-all">
+              <span class="">Prepare draft</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </button>
+          </div>
+        </div></section>
+
+      <!-- Quiet Trust Note / Memory Boundary -->
+      
+
+    </main>
+
+  </div>
+
+
+
+
+
+
+</body></html>

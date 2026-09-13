@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Today - Caseflow</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#F9F9F7",
+            "surface-low": "#F4F4F2",
+            "surface-card": "#FFFFFF",
+            "surface-dim": "#EEEEEC",
+            "surface-border": "#E8E8E5",
+            "primary": "#161616",
+            "on-surface-variant": "#5F6160",
+            "tertiary": "#858784",
+            "outline": "#8A8D8C",
+            "outline-light": "#D8D9D7",
+            "secondary": "#9A442D",
+            "secondary-light": "#FFDAD2",
+            "secondary-dark": "#742814"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "card": "18px",
+            "checkbox": "6px"
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #F9F9F7;
+        color: #161616;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body { overscroll-behavior-y: none; }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-surface font-sans text-primary flex flex-col min-h-screen antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-40 pt-safe bg-surface/90 backdrop-blur-md border-b border-surface-border">
+<div class="max-w-[420px] mx-auto h-16 px-5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-[19px] tracking-tight text-primary">Caseflow</span>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-dim hover:bg-surface-border transition-colors flex items-center gap-1 text-[13px] font-semibold text-primary">
+<span class="">Youth Outreach</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">arrow_drop_down</span>
+</button>
+</div>
+<button aria-label="Profile" class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white shrink-0 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area centered to mobile app viewport width -->
+<main class="flex-1 w-full max-w-[420px] mx-auto pt-20 px-5 pb-40">
+<div class="flex flex-col space-y-6">
+<!-- Page Title -->
+<div class="flex flex-col space-y-0.5 pt-2">
+<span class="text-[13px] font-semibold uppercase tracking-wider text-on-surface-variant">Wednesday, October 24</span>
+<h1 class="text-[30px] font-extrabold tracking-tight text-primary leading-tight">Today</h1>
+</div>
+<!-- Undo Toast Notification Buffer -->
+<div class="hidden transition-all duration-300 ease-out bg-primary text-white px-4 py-2.5 rounded-full shadow-lg flex items-center justify-between" id="undoToast">
+<div class="flex items-center gap-2 min-w-0 pr-2">
+<span class="material-symbols-outlined text-[18px] text-secondary-light shrink-0">check_circle</span>
+<span class="text-[13px] font-medium truncate" id="toastMessage">Marked complete</span>
+</div>
+<button class="text-[13px] font-bold text-secondary-light uppercase tracking-wider px-2 py-1 min-h-[32px] flex items-center shrink-0 active:scale-95 transition-transform hover:text-white" id="undoBtn">Undo</button>
+</div>
+<!-- 1. Needs attention -->
+<section class="flex flex-col space-y-2">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<h2 class="text-[17px] font-bold text-primary">Needs attention</h2>
+<span class="text-[13px] text-tertiary">·</span>
+<span class="text-[13px] font-medium text-on-surface-variant">2</span>
+</div>
+</div>
+<!-- Level 2 Grouped Working Surface (rounded-[18px], border border-[#E8E8E5], fine divider) -->
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_4px_16px_-4px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<!-- Row 1: Overdue -->
+<div class="task-row flex items-start gap-3.5 p-4 hover:bg-surface-low/50 transition-colors" id="task-1">
+<button aria-label="Mark Call school counsellor complete" class="complete-btn mt-0.5 w-[22px] h-[22px] rounded-checkbox border-2 border-primary flex items-center justify-center text-transparent hover:border-secondary transition-all shrink-0" data-task-id="task-1" data-task-title="Call school counsellor">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-title text-[15px] font-semibold text-primary block leading-snug">Call school counsellor</span>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="font-medium text-on-surface-variant">Jordan M.</span>
+<span class="text-tertiary">·</span>
+<span class="font-semibold text-secondary">Overdue</span>
+</div>
+</div>
+<button aria-label="Task options" class="w-8 h-8 flex items-center justify-center text-tertiary hover:text-primary transition-colors shrink-0 -mr-1">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+<!-- Row 2: Due today -->
+<div class="task-row flex items-start gap-3.5 p-4 hover:bg-surface-low/50 transition-colors" id="task-2">
+<button aria-label="Confirm transportation for Friday" class="complete-btn mt-0.5 w-[22px] h-[22px] rounded-checkbox border-2 border-primary flex items-center justify-center text-transparent hover:border-secondary transition-all shrink-0" data-task-id="task-2" data-task-title="Confirm transportation for Friday">
+<span class="material-symbols-outlined text-[15px] font-bold">check</span>
+</button>
+<div class="flex-1 min-w-0 pr-1">
+<span class="task-title text-[15px] font-semibold text-primary block leading-snug">Confirm transportation for Friday</span>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="font-medium text-on-surface-variant">Maya R.</span>
+<span class="text-tertiary">·</span>
+<span class="font-medium text-on-surface-variant">Due today</span>
+</div>
+</div>
+<button aria-label="Task options" class="w-8 h-8 flex items-center justify-center text-tertiary hover:text-primary transition-colors shrink-0 -mr-1">
+<span class="material-symbols-outlined text-[18px]">more_horiz</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. To document -->
+<section class="flex flex-col space-y-2">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-1.5">
+<h2 class="text-[17px] font-bold text-primary">To document</h2>
+<span class="text-[13px] text-tertiary">·</span>
+<span class="text-[13px] font-medium text-on-surface-variant">2</span>
+</div>
+<button class="text-[13px] font-semibold text-secondary flex items-center gap-0.5 hover:underline py-1">
+<span class="">Review all</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Level 2 Grouped Working Surface with internal divider -->
+<div class="bg-surface-card rounded-card border border-surface-border shadow-[0_4px_16px_-4px_rgba(22,22,22,0.03)] divide-y divide-surface-border overflow-hidden">
+<!-- Item 1 -->
+<div class="p-4 hover:bg-surface-low/50 transition-colors flex items-center justify-between gap-3 cursor-pointer">
+<div class="flex-1 min-w-0">
+<span class="font-bold text-[15px] text-primary block leading-snug">Jordan M.</span>
+<span class="text-[13px] text-on-surface-variant block mt-0.5 truncate">After-school check-in · Today, 2:40 PM</span>
+</div>
+<button class="min-h-[36px] px-3.5 py-1.5 rounded-full bg-surface-dim hover:bg-surface-border text-primary font-semibold text-[13px] flex items-center gap-1 shrink-0 transition-colors active:scale-95">
+<span class="">Prepare</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="p-4 hover:bg-surface-low/50 transition-colors flex items-center justify-between gap-3 cursor-pointer">
+<div class="flex-1 min-w-0">
+<span class="font-bold text-[15px] text-primary block leading-snug">Maya R.</span>
+<span class="text-[13px] text-on-surface-variant block mt-0.5 truncate">Phone call · Yesterday, 4:15 PM</span>
+</div>
+<button class="min-h-[36px] px-3.5 py-1.5 rounded-full bg-surface-dim hover:bg-surface-border text-primary font-semibold text-[13px] flex items-center gap-1 shrink-0 transition-colors active:scale-95">
+<span class="">Prepare</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 3. Coming up -->
+<section class="flex flex-col space-y-2">
+<div class="px-1">
+<h2 class="text-[17px] font-bold text-primary">Coming up</h2>
+</div>
+<!-- Clean, flatter presentation with internal divider -->
+<div class="bg-surface-card rounded-card border border-surface-border divide-y divide-surface-border overflow-hidden">
+<div class="p-4 flex items-center justify-between gap-3">
+<div class="flex-1 min-w-0">
+<span class="text-[15px] font-semibold text-primary block leading-snug">Check application status</span>
+<span class="text-[13px] text-on-surface-variant font-medium block mt-1">Eli T. · Tomorrow</span>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between gap-3">
+<div class="flex-1 min-w-0">
+<span class="text-[15px] font-semibold text-primary block leading-snug">Follow up on housing paperwork</span>
+<span class="text-[13px] text-on-surface-variant font-medium block mt-1">Noah K. · Friday</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Recent clients -->
+<section class="flex flex-col space-y-2">
+<div class="px-1">
+<h2 class="text-[17px] font-bold text-primary">Recent clients</h2>
+</div>
+<!-- Editorial list rows directly on the warm paper surface separated by subtle fine dividers (#E8E8E5) -->
+<div class="divide-y divide-surface-border px-1">
+<div class="py-3.5">
+<h3 class="text-[15px] font-bold text-primary">Jordan M.</h3>
+<p class="text-[13px] text-on-surface-variant mt-0.5 leading-relaxed">
+              School attendance improving; transportation still unresolved.
+            </p>
+</div>
+<div class="py-3.5">
+<h3 class="text-[15px] font-bold text-primary">Maya R.</h3>
+<p class="text-[13px] text-on-surface-variant mt-0.5 leading-relaxed">
+              Waiting for housing program response.
+            </p>
+</div>
+<div class="py-3.5">
+<h3 class="text-[15px] font-bold text-primary">Eli T.</h3>
+<p class="text-[13px] text-on-surface-variant mt-0.5 leading-relaxed">
+              Paperwork submitted; follow-up still needed.
+            </p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Standardized Bottom Floating Navigation Dock -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe px-4 pointer-events-none mb-3">
+<div class="max-w-[420px] mx-auto pointer-events-auto h-16 bg-surface-card/95 backdrop-blur-xl rounded-full border border-surface-border shadow-[0_16px_36px_-6px_rgba(22,22,22,0.08),0_4px_12px_-2px_rgba(22,22,22,0.03)] px-3 flex items-center justify-between">
+<!-- Destination: Today (Active) -->
+<a aria-current="page" class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center transition-colors text-primary font-bold" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+<span class="text-[13px] font-bold mt-0.5 tracking-tight">Today</span>
+</a>
+<!-- Destination: Caseload -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_shared</span>
+<span class="text-[13px] font-semibold mt-0.5 tracking-tight">Caseload</span>
+</a>
+<!-- Elevated Tactile Clay Capture Action -->
+<div class="flex items-center justify-center px-2">
+<button aria-label="Global Capture" class="min-h-[48px] min-w-[48px] w-12 h-12 rounded-full bg-secondary text-white shadow-[0_4px_14px_rgba(154,68,45,0.35)] flex items-center justify-center active:scale-95 transition-transform hover:opacity-95">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+<!-- Destination: Tasks -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span class="text-[13px] font-semibold mt-0.5 tracking-tight">Tasks</span>
+</a>
+</div>
+</nav>
+<script>
+    (function() {
+      let lastCompletedTaskId = null;
+      let toastTimeout = null;
+
+      const undoToast = document.getElementById('undoToast');
+      const toastMessage = document.getElementById('toastMessage');
+      const undoBtn = document.getElementById('undoBtn');
+      const buttons = document.querySelectorAll('.complete-btn');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const taskId = this.getAttribute('data-task-id');
+          const taskTitle = this.getAttribute('data-task-title');
+          const row = document.getElementById(taskId);
+          if (!row) return;
+
+          const isCompleted = row.classList.contains('opacity-40');
+          if (!isCompleted) {
+            row.classList.add('opacity-40');
+            const titleEl = row.querySelector('.task-title');
+            if (titleEl) titleEl.classList.add('line-through', 'text-tertiary');
+            this.classList.replace('border-primary', 'border-secondary');
+            this.classList.replace('text-transparent', 'text-white');
+            this.classList.add('bg-secondary');
+
+            lastCompletedTaskId = taskId;
+            toastMessage.textContent = `Completed "${taskTitle}"`;
+            undoToast.classList.remove('hidden');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+              undoToast.classList.add('hidden');
+            }, 4500);
+          }
+        });
+      });
+
+      if (undoBtn) {
+        undoBtn.addEventListener('click', () => {
+          if (!lastCompletedTaskId) return;
+          const row = document.getElementById(lastCompletedTaskId);
+          if (row) {
+            row.classList.remove('opacity-40');
+            const titleEl = row.querySelector('.task-title');
+            if (titleEl) titleEl.classList.remove('line-through', 'text-tertiary');
+            const btn = row.querySelector('.complete-btn');
+            if (btn) {
+              btn.classList.replace('border-secondary', 'border-primary');
+              btn.classList.replace('text-white', 'text-transparent');
+              btn.classList.remove('bg-secondary');
+            }
+          }
+          undoToast.classList.add('hidden');
+          clearTimeout(toastTimeout);
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

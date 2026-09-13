@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Choose a Program — Caseflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9f7",
+            "surface-dim": "#dadad8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#444748",
+            "primary": "#161616",
+            "secondary": "#9a442d",
+            "outline": "#747878"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #f9f9f7;
+      color: #1a1c1b;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-surface flex flex-col min-h-screen">
+  <!-- Minimal Top Chrome -->
+  <header class="w-full pt-8 pb-4 px-6 flex justify-center">
+    <span class="text-[20px] font-extrabold tracking-tight text-primary">Caseflow</span>
+  </header>
+
+  <!-- Focused Center Card -->
+  <main class="flex-1 w-full max-w-md mx-auto px-6 flex flex-col justify-center pb-16">
+    <div class="mb-8">
+      
+      <h1 class="text-[30px] font-extrabold text-primary tracking-tight mt-1">Choose a program</h1>
+      <p class="text-[15px] text-on-surface-variant mt-1.5">Where are you working right now?</p>
+    </div>
+
+    <!-- Selection Rows -->
+    <div class="flex flex-col gap-3.5 w-full">
+      <!-- Program 1 -->
+      <a href="#" class="group p-5 bg-surface-container-lowest rounded-DEFAULT shadow-[0_4px_20px_-2px_rgba(26,28,27,0.05)] border border-surface-container-high hover:border-primary transition-all active:scale-[0.98] flex items-center justify-between">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-full bg-surface-container group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center text-primary flex-shrink-0">
+            <span class="material-symbols-outlined text-[22px]">explore</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-[17px] font-bold text-primary">Youth Outreach</span>
+            
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+      </a>
+
+      <!-- Program 2 -->
+      <a href="#" class="group p-5 bg-surface-container-lowest rounded-DEFAULT shadow-[0_4px_20px_-2px_rgba(26,28,27,0.05)] border border-surface-container-high hover:border-primary transition-all active:scale-[0.98] flex items-center justify-between">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-full bg-surface-container group-hover:bg-primary group-hover:text-white transition-colors flex items-center justify-center text-primary flex-shrink-0">
+            <span class="material-symbols-outlined text-[22px]">diversity_1</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-[17px] font-bold text-primary">Family Support</span>
+            
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-[20px] text-outline group-hover:text-primary transition-colors">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Quiet Informative Note -->
+    
+  </main>
+
+
+
+
+</body></html>

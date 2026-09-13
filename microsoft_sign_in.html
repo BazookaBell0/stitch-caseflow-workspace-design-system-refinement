@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Sign in — Caseflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9f7",
+            "surface-dim": "#dadad8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#444748",
+            "primary": "#161616",
+            "secondary": "#9a442d",
+            "outline": "#747878"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #f9f9f7;
+      color: #1a1c1b;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-surface flex flex-col min-h-screen">
+  <!-- Minimal Header -->
+  <header class="w-full pt-10 pb-4 px-6 flex justify-center">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-secondary"></span>
+      <span class="text-[22px] font-extrabold tracking-tight text-primary">Caseflow</span>
+    </div>
+  </header>
+
+  <!-- Clean Organizational Auth Center -->
+  <main class="flex-1 w-full max-w-sm mx-auto px-6 flex flex-col justify-center pb-20">
+    <div class="text-center mb-8">
+      <h1 class="text-[28px] font-extrabold text-primary tracking-tight">Welcome to Caseflow</h1>
+      <p class="text-[15px] text-on-surface-variant mt-2 leading-normal">Sign in with your organization account to continue.</p>
+    </div>
+
+    <!-- Authentication Card -->
+    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_8px_32px_-4px_rgba(26,28,27,0.06)] border border-surface-container-high flex flex-col gap-4">
+      <button class="w-full min-h-[50px] px-5 py-3 rounded-DEFAULT bg-primary hover:bg-black text-white font-semibold text-[15px] flex items-center justify-center gap-3 active:scale-[0.98] transition-all shadow-sm">
+        <!-- Clean Microsoft 4-square vector icon -->
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="9" height="9" fill="#F25022"></rect>
+          <rect x="11" y="1" width="9" height="9" fill="#7FBA00"></rect>
+          <rect x="1" y="11" width="9" height="9" fill="#00A4EF"></rect>
+          <rect x="11" y="11" width="9" height="9" fill="#FFB900"></rect>
+        </svg>
+        <span class="">Continue with Microsoft</span>
+      </button>
+
+      
+    </div>
+
+    <!-- Quiet Organizational Footnote -->
+    
+  </main>
+
+
+
+
+</body></html>

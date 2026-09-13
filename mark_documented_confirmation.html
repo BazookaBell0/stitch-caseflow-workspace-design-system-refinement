@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>Mark Documented Confirmation — Caseflow</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F9F9F7',
+            surface: {
+              recessed: '#F4F4F2',
+              grouped: '#EEEEEC',
+              elevated: '#FFFFFF',
+              high: '#E8E8E6',
+              dim: '#DADAD8',
+            },
+            carbon: '#161616',
+            secondaryText: '#5F6160',
+            tertiaryText: '#858784',
+            divider: '#E8E8E5',
+            clay: {
+              DEFAULT: '#9A442D',
+              soft: '#FFDAD2',
+              dark: '#742814',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #161616;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-carbon/60 flex flex-col justify-end items-center p-0 m-0">
+  <div class="w-full max-w-[430px] h-screen flex flex-col justify-end relative">
+    
+    <!-- Dimmed background hint of the To Document list -->
+    <div class="absolute inset-0 bg-canvas opacity-25 pointer-events-none"></div>
+
+    <!-- Confirmation Sheet (Focused bottom sheet) -->
+    <div class="w-full bg-surface-elevated rounded-t-[28px] p-6 shadow-[0_-12px_36px_rgba(22,22,22,0.18)] z-30 flex flex-col gap-5 border-t border-divider relative">
+      
+      <!-- Drag handle / subtle sheet cue -->
+      <div class="w-10 h-1 rounded-full bg-surface-dim mx-auto mb-1"></div>
+
+      <!-- Item context preview badge -->
+      <div class="flex items-center gap-2 p-3 rounded-xl bg-surface-recessed border border-divider">
+        <div class="w-8 h-8 rounded-full bg-surface-grouped flex items-center justify-center text-carbon shrink-0">
+          <span class="material-symbols-outlined text-[18px]">task_alt</span>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="text-[14px] font-bold text-carbon truncate">Noah K. · Paperwork follow-up</span>
+          <span class="text-[12px] text-tertiaryText truncate">Note copied Monday · 3:05 PM</span>
+        </div>
+      </div>
+
+      <!-- Sheet Header -->
+      <div class="flex flex-col gap-1.5">
+        <h2 class="text-[22px] font-extrabold text-carbon tracking-tight">Mark as documented?</h2>
+        <p class="text-[14px] font-normal text-secondaryText leading-relaxed">
+          Use this after you’ve finished documenting the interaction in your organization’s official system.
+        </p>
+      </div>
+
+      <!-- Quiet reassurance: original capture is preserved -->
+      <div class="flex items-center gap-2 text-[12px] text-tertiaryText">
+        <span class="material-symbols-outlined text-[16px] text-tertiaryText">shield</span>
+        <span>This removes the reminder. The capture remains in client activity.</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col gap-2.5 pt-2">
+        <button class="w-full min-h-[50px] rounded-full bg-clay text-white text-[15px] font-bold flex items-center justify-center shadow-md active:scale-[0.98] transition-all">
+          Mark documented
+        </button>
+        <button class="w-full min-h-[46px] rounded-full bg-transparent hover:bg-surface-recessed text-carbon text-[14px] font-semibold flex items-center justify-center active:scale-[0.98] transition-all">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

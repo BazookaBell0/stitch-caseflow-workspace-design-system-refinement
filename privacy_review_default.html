@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Privacy Review — Caseflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F9F9F7',
+            'paper-recessed': '#F4F4F2',
+            'surface-grouped': '#EEEEEC',
+            'surface-white': '#FFFFFF',
+            'text-primary': '#161616',
+            'text-secondary': '#5F6160',
+            'text-tertiary': '#858784',
+            divider: '#E8E8E5',
+            'border-strong': '#D8D9D7',
+            clay: '#9A442D',
+            'clay-soft': '#FFDAD2',
+            'clay-tint': '#FC9174'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #121312;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 text-text-primary">
+
+  <!-- Mobile Frame / Working Paper Sheet -->
+  <div class="w-full max-w-[400px] min-h-[780px] bg-canvas rounded-[24px] shadow-2xl flex flex-col justify-between overflow-hidden relative border border-border-strong/40">
+
+    <!-- Top Workflow Header -->
+    <div>
+      <header class="px-5 pt-5 pb-3 flex items-center justify-between border-b border-divider">
+        <button onclick="history.back()" class="flex items-center gap-1.5 text-text-secondary hover:text-text-primary active:scale-95 transition-all text-[15px] font-medium py-1 -ml-1">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+          <span class="">Back</span>
+        </button>
+        <span class="text-[14px] font-semibold text-text-secondary uppercase tracking-wider">Privacy review</span>
+        <div class="w-12"></div> <!-- Spacer for balance -->
+      </header>
+
+      <!-- Main Content Container -->
+      <div class="px-5 pt-6 pb-4">
+        
+        <!-- Primary Trust Header -->
+        <div class="flex items-start gap-3 mb-5">
+          <div class="w-9 h-9 rounded-full bg-clay-soft flex items-center justify-center text-clay shrink-0 mt-0.5">
+            <span class="material-symbols-outlined text-[20px]">shield</span>
+          </div>
+          <div>
+            <h1 class="text-[24px] font-extrabold tracking-tight text-text-primary leading-tight">Private details protected</h1>
+            <p class="text-[14px] text-text-secondary mt-1 leading-relaxed">
+              Review the protected version before it is used to prepare your documentation draft.
+            </p>
+          </div>
+        </div>
+
+        <!-- Protected Version Working Card (Level 3 Focused Surface) -->
+        <section class="mb-4">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-[14px] font-bold text-text-primary uppercase tracking-wider">Protected version</h2>
+            
+          </div>
+
+          <div class="bg-surface-white rounded-[18px] p-4 sm:p-5 border border-divider shadow-[0_4px_16px_-4px_rgba(22,22,22,0.04)]">
+            <p class="text-[15px] leading-relaxed text-text-primary">
+              “Met <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-paper-recessed text-clay font-bold text-[14px] border border-divider/70 align-baseline">[CLIENT]</span> after school. <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-paper-recessed text-clay font-bold text-[14px] border border-divider/70 align-baseline">[CLIENT]</span> said the bus didn’t arrive this morning. We talked about trying the earlier route tomorrow. I said I would call <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-paper-recessed text-clay font-bold text-[14px] border border-divider/70 align-baseline">[SCHOOL CONTACT]</span> before the end of the day.”
+            </p>
+
+            <!-- Quiet AI Boundary Line -->
+            <div class="mt-4 pt-3 border-t border-divider flex items-center gap-2 text-text-secondary text-[13px]">
+              <span class="material-symbols-outlined text-[16px] text-clay shrink-0">verified_user</span>
+              <span class="">Only the protected version will be used to prepare the draft.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Progressive Disclosure Accordion / Summary Row -->
+        <div class="bg-surface-white rounded-[16px] border border-divider overflow-hidden">
+          <button id="toggleReviewBtn" class="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-paper-recessed/60 active:bg-surface-grouped transition-colors">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-clay shrink-0"></span>
+              <span class="text-[14px] font-semibold text-text-primary">3 private details protected</span>
+            </div>
+            <div class="flex items-center gap-1 text-[13px] font-semibold text-clay">
+              <span id="toggleText" class="">Review details</span>
+              <span id="toggleIcon" class="material-symbols-outlined text-[18px] transition-transform duration-200">expand_more</span>
+            </div>
+          </button>
+
+          <!-- Collapsed Drawer (Hidden by default in State A) -->
+          <div id="detailsDrawer" class="hidden border-t border-divider px-4 py-3 bg-paper-recessed/40 space-y-2.5">
+            <div class="text-[12px] font-semibold text-text-tertiary uppercase tracking-wider mb-1">Original context · Protected token</div>
+            
+            <div class="flex items-center justify-between text-[14px] py-1 border-b border-divider/60">
+              <span class="font-medium text-text-primary">Jordan M. <span class="text-text-tertiary text-[12px]">(2 references)</span></span>
+              <span class="px-2 py-0.5 rounded bg-surface-white border border-divider font-semibold text-clay text-[13px]">[CLIENT]</span>
+            </div>
+
+            <div class="flex items-center justify-between text-[14px] py-1">
+              <span class="font-medium text-text-primary">Ms. Patel <span class="text-text-tertiary text-[12px]">(1 reference)</span></span>
+              <span class="px-2 py-0.5 rounded bg-surface-white border border-divider font-semibold text-clay text-[13px]">[SCHOOL CONTACT]</span>
+            </div>
+
+            <div class="pt-2 text-[12px] text-text-tertiary leading-normal">Only the protected replacements are used to prepare the draft.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Action Area -->
+    <div class="p-5 bg-canvas border-t border-divider">
+      <a href="#prepare" class="w-full h-[50px] bg-clay hover:bg-[#853924] active:scale-[0.98] text-white rounded-full font-bold text-[15px] flex items-center justify-center gap-2 shadow-[0_6px_16px_rgba(154,68,45,0.25)] transition-all">
+        <span class="">Continue to draft</span>
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+      
+    </div>
+
+  </div>
+
+  <script>
+    const btn = document.getElementById('toggleReviewBtn');
+    const drawer = document.getElementById('detailsDrawer');
+    const text = document.getElementById('toggleText');
+    const icon = document.getElementById('toggleIcon');
+
+    btn.addEventListener('click', () => {
+      const isHidden = drawer.classList.contains('hidden');
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        text.textContent = 'Hide details';
+        icon.classList.add('rotate-180');
+      } else {
+        drawer.classList.add('hidden');
+        text.textContent = 'Review details';
+        icon.classList.remove('rotate-180');
+      }
+    });
+  </script>
+
+
+
+
+</body></html>

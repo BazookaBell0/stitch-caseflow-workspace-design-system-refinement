@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Caseload - Caseflow</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas": "#F9F9F7",
+            "surface-grouped": "#FFFFFF",
+            "surface-recessed": "#F4F4F2",
+            "surface-dim": "#EEEEEC",
+            "divider": "#E8E8E5",
+            "carbon": "#161616",
+            "text-secondary": "#5F6160",
+            "text-tertiary": "#858784",
+            "clay": "#9A442D",
+            "clay-dark": "#7B3320"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"]
+          },
+          boxShadow: {
+            "card": "0 1px 3px rgba(22, 22, 22, 0.03), 0 6px 16px -4px rgba(22, 22, 22, 0.04)",
+            "dock": "0 16px 36px -6px rgba(22, 22, 22, 0.08), 0 4px 12px -2px rgba(22, 22, 22, 0.03)",
+            "action": "0 4px 14px rgba(154, 68, 45, 0.3)"
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #F9F9F7;
+        color: #161616;
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        overscroll-behavior-y: none;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-[#F9F9F7] font-sans text-carbon min-h-screen antialiased flex flex-col justify-start">
+<!-- Mobile Viewport Container: 390-420px max width -->
+<div class="w-full max-w-[420px] mx-auto min-h-screen flex flex-col relative bg-[#F9F9F7]">
+<!-- Top App Bar -->
+<header class="sticky top-0 w-full z-40 pt-safe bg-[#F9F9F7]/95 backdrop-blur-md">
+<div class="h-14 px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-extrabold text-[18px] tracking-tight text-carbon">Caseflow</span>
+<button aria-label="Program selector" class="min-h-[34px] px-2.5 py-1 rounded-full bg-surface-dim hover:bg-divider transition-colors flex items-center gap-1 text-[13px] font-semibold text-carbon">
+<span class="">Youth Outreach</span>
+<span class="material-symbols-outlined text-[16px] text-text-secondary">arrow_drop_down</span>
+</button>
+</div>
+<button aria-label="Profile" class="w-8 h-8 rounded-full bg-carbon flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Stream -->
+<main class="flex-1 w-full px-4 pt-2 flex flex-col space-y-5 pb-40 pb-safe">
+<!-- Page Title & Secondary Counter -->
+<div class="flex flex-col space-y-0.5 pt-1">
+<h1 class="text-[28px] font-extrabold tracking-tight text-carbon leading-tight">Caseload</h1>
+<p class="text-[14px] text-text-secondary font-medium" id="caseload-count">5 clients</p>
+</div>
+<!-- Tactile Recessed Search Field -->
+<div class="relative w-full">
+<div class="flex items-center w-full bg-surface-recessed rounded-[14px] border border-divider px-3.5 py-2.5 focus-within:border-carbon/40 focus-within:bg-[#FFFFFF] transition-all">
+<span class="material-symbols-outlined text-[20px] text-text-tertiary mr-2.5 select-none shrink-0">search</span>
+<input autocomplete="off" class="w-full bg-transparent border-none p-0 outline-none text-[15px] text-carbon placeholder:text-text-tertiary font-normal focus:ring-0" id="caseload-search" placeholder="Search my caseload" spellcheck="false" type="text">
+<button aria-label="Clear search" class="hidden text-text-tertiary hover:text-carbon transition-colors p-0.5" id="search-clear-btn">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+<!-- Unified Level 2 Grouped Working Surface with fine dividers -->
+<section class="flex flex-col space-y-2">
+<div class="bg-surface-grouped rounded-[18px] border border-divider shadow-card divide-y divide-divider overflow-hidden" id="client-list">
+<!-- Client 1: Jordan M. -->
+<div class="client-item p-4 hover:bg-[#FDFDFD] transition-colors cursor-pointer flex items-center justify-between gap-3 min-h-[72px]" data-name="jordan m">
+<div class="flex-1 min-w-0">
+<h2 class="text-[16px] font-bold text-carbon tracking-tight">Jordan M.</h2>
+<p class="text-[13px] text-text-secondary mt-0.5">
+                Last activity: Today <span class="text-text-tertiary mx-1">·</span> 3 open commitments
+              </p>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="text-text-secondary font-medium">Next:</span>
+<span class="text-carbon font-semibold truncate">Call school counsellor</span>
+<span class="text-text-tertiary">·</span>
+<span class="font-bold text-clay">Today</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-tertiary shrink-0">chevron_right</span>
+</div>
+<!-- Client 2: Maya R. -->
+<div class="client-item p-4 hover:bg-[#FDFDFD] transition-colors cursor-pointer flex items-center justify-between gap-3 min-h-[72px]" data-name="maya r">
+<div class="flex-1 min-w-0">
+<h2 class="text-[16px] font-bold text-carbon tracking-tight">Maya R.</h2>
+<p class="text-[13px] text-text-secondary mt-0.5">
+                Last activity: Yesterday <span class="text-text-tertiary mx-1">·</span> 1 open commitment
+              </p>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="text-text-secondary font-medium">Next:</span>
+<span class="text-carbon font-semibold truncate">Confirm transportation</span>
+<span class="text-text-tertiary">·</span>
+<span class="font-medium text-text-secondary">Friday</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-tertiary shrink-0">chevron_right</span>
+</div>
+<!-- Client 3: Eli T. -->
+<div class="client-item p-4 hover:bg-[#FDFDFD] transition-colors cursor-pointer flex items-center justify-between gap-3 min-h-[72px]" data-name="eli t">
+<div class="flex-1 min-w-0">
+<h2 class="text-[16px] font-bold text-carbon tracking-tight">Eli T.</h2>
+<p class="text-[13px] text-text-secondary mt-0.5">
+                Last activity: 3 days ago <span class="text-text-tertiary mx-1">·</span> 1 open commitment
+              </p>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="text-text-secondary font-medium">Next:</span>
+<span class="text-carbon font-semibold truncate">Check application status</span>
+<span class="text-text-tertiary">·</span>
+<span class="font-medium text-text-secondary">Tomorrow</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-tertiary shrink-0">chevron_right</span>
+</div>
+<!-- Client 4: Noah K. -->
+<div class="client-item p-4 hover:bg-[#FDFDFD] transition-colors cursor-pointer flex items-center justify-between gap-3 min-h-[72px]" data-name="noah k">
+<div class="flex-1 min-w-0">
+<h2 class="text-[16px] font-bold text-carbon tracking-tight">Noah K.</h2>
+<p class="text-[13px] text-text-secondary mt-0.5">
+                Last activity: Oct 18 <span class="text-text-tertiary mx-1">·</span> 2 open commitments
+              </p>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="text-text-secondary font-medium">Next:</span>
+<span class="text-carbon font-semibold truncate">Housing paperwork</span>
+<span class="text-text-tertiary">·</span>
+<span class="font-medium text-text-secondary">Friday</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-tertiary shrink-0">chevron_right</span>
+</div>
+<!-- Client 5: Samira L. -->
+<div class="client-item p-4 hover:bg-[#FDFDFD] transition-colors cursor-pointer flex items-center justify-between gap-3 min-h-[72px]" data-name="samira l">
+<div class="flex-1 min-w-0">
+<h2 class="text-[16px] font-bold text-carbon tracking-tight">Samira L.</h2>
+<p class="text-[13px] text-text-secondary mt-0.5">
+                Last activity: Oct 16 <span class="text-text-tertiary mx-1">·</span> 0 open commitments
+              </p>
+<div class="flex items-center gap-1.5 mt-1 text-[13px]">
+<span class="text-text-tertiary">No dated commitments</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-tertiary shrink-0">chevron_right</span>
+</div>
+</div>
+<!-- Empty state when search produces no results -->
+<div class="hidden flex-col items-center justify-center p-8 text-center bg-surface-grouped rounded-[18px] border border-divider" id="search-empty-state">
+<span class="material-symbols-outlined text-text-tertiary text-[32px] mb-2">person_search</span>
+<p class="text-[15px] font-bold text-carbon">No matching clients</p>
+<p class="text-[13px] text-text-secondary mt-1">No one in your current caseload matches this search.</p>
+</div>
+</section>
+<!-- Coverage Section: Quieter paper card -->
+<section class="pt-1">
+<div class="bg-surface-recessed rounded-[16px] p-4 border border-divider flex flex-col space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[19px] text-carbon">handshake</span>
+<h3 class="text-[15px] font-bold text-carbon">Covering for someone?</h3>
+</div>
+<p class="text-[13px] text-text-secondary leading-relaxed">
+            Find another client in Youth Outreach when covering for a coworker.
+          </p>
+<div class="pt-1">
+<button class="min-h-[40px] px-4 py-2 rounded-full bg-surface-grouped border border-divider text-carbon font-semibold text-[13px] inline-flex items-center gap-1.5 hover:bg-[#FAF9F7] active:scale-[0.98] transition-all shadow-[0_1px_2px_rgba(22,22,22,0.04)]">
+<span class="">Find a program client</span>
+<span class="material-symbols-outlined text-[16px] text-clay">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Standardized Bottom Floating Navigation Dock -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 pb-safe px-4 pointer-events-none mb-3">
+<div class="w-full max-w-[420px] mx-auto pointer-events-auto h-16 bg-surface-grouped/95 backdrop-blur-xl rounded-full border border-divider shadow-dock px-3 flex items-center justify-between">
+<!-- Destination: Today -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-text-secondary hover:text-carbon transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+<span class="font-semibold mt-0.5 text-[13px]">Today</span>
+</a>
+<!-- Destination: Caseload (Active) -->
+<a aria-current="page" class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-carbon font-bold transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">folder_shared</span>
+<span class="font-bold mt-0.5 text-[13px]">Caseload</span>
+</a>
+<!-- Central Tactile Clay Capture Button -->
+<div class="flex items-center justify-center px-1">
+<button aria-label="Capture commitment or note" class="min-h-[48px] min-w-[48px] w-12 h-12 rounded-full bg-clay hover:bg-clay-dark text-white shadow-action flex items-center justify-center active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+<!-- Destination: Tasks -->
+<a class="min-h-[48px] min-w-[48px] flex-1 flex flex-col items-center justify-center text-text-secondary hover:text-carbon transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+<span class="font-semibold mt-0.5 text-[13px]">Tasks</span>
+</a>
+</div>
+</nav>
+</div>
+<script>
+    (function() {
+      const searchInput = document.getElementById('caseload-search');
+      const clearBtn = document.getElementById('search-clear-btn');
+      const items = document.querySelectorAll('.client-item');
+      const emptyState = document.getElementById('search-empty-state');
+      const countDisplay = document.getElementById('caseload-count');
+      const totalCount = items.length;
+
+      function filter(q) {
+        const query = q.toLowerCase().trim();
+        let matchCount = 0;
+
+        items.forEach(item => {
+          const name = item.getAttribute('data-name') || '';
+          const text = item.textContent.toLowerCase();
+          if (!query || name.includes(query) || text.includes(query)) {
+            item.classList.remove('hidden');
+            matchCount++;
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        if (countDisplay) {
+          if (query) {
+            countDisplay.textContent = matchCount === 1 ? '1 client found' : `${matchCount} clients found`;
+          } else {
+            countDisplay.textContent = `${totalCount} clients`;
+          }
+        }
+
+        if (matchCount === 0 && query !== '') {
+          emptyState.classList.remove('hidden');
+          emptyState.classList.add('flex');
+        } else {
+          emptyState.classList.add('hidden');
+          emptyState.classList.remove('flex');
+        }
+
+        if (query.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => filter(e.target.value));
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filter('');
+          searchInput.focus();
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

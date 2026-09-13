@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <title>Coverage Search — Caseflow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f9f9f7",
+            "surface-dim": "#dadad8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f4f2",
+            "surface-container": "#eeeeec",
+            "surface-container-high": "#e8e8e6",
+            "on-surface": "#1a1c1b",
+            "on-surface-variant": "#444748",
+            "primary": "#161616",
+            "secondary": "#9a442d",
+            "outline": "#747878",
+            "outline-variant": "#c4c7c7",
+            "tertiary-fixed": "#ffddb2",
+            "on-tertiary-fixed": "#291800"
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #f9f9f7;
+      color: #1a1c1b;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-surface flex flex-col min-h-screen">
+  <!-- Workflow Header -->
+  <header class="w-full bg-surface border-b border-surface-container pt-4 pb-3 px-5">
+    <div class="max-w-md mx-auto flex items-center justify-between">
+      <a href="#" class="inline-flex items-center gap-1.5 text-on-surface hover:text-secondary font-medium text-[15px] py-2">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        <span>Caseload</span>
+      </a>
+      <span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-[13px] font-semibold">Youth Outreach</span>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 w-full max-w-md mx-auto px-5 pt-5 pb-8 flex flex-col">
+    <div class="mb-5">
+      <h1 class="text-[26px] font-extrabold text-primary tracking-tight">Find a program client</h1>
+      <p class="text-[14px] text-on-surface-variant mt-0.5">Youth Outreach coverage</p>
+    </div>
+
+    <!-- Prominent Deliberate Search Field -->
+    <div class="relative w-full mb-6">
+      <div class="relative flex items-center w-full bg-surface-container-high rounded-DEFAULT px-3.5 py-3 shadow-[inset_0_2px_4px_rgba(26,28,27,0.04)] focus-within:bg-surface-container-lowest focus-within:shadow-[0_8px_20px_-4px_rgba(26,28,27,0.06)] transition-all">
+        <span class="material-symbols-outlined text-[20px] text-outline mr-2.5 select-none">search</span>
+        <input type="text" placeholder="Search program clients" class="w-full bg-transparent border-none outline-none text-[16px] text-primary placeholder:text-outline font-normal" autofocus/>
+      </div>
+    </div>
+
+    <!-- Search-First Initial Quiet State -->
+    <div class="flex-1 flex flex-col items-center justify-center text-center py-12 px-4">
+      <div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-3.5 text-on-surface-variant">
+        <span class="material-symbols-outlined text-[24px]">handshake</span>
+      </div>
+      <p class="text-[15px] font-medium text-primary">Search for a client when covering for a coworker.</p>
+      <p class="text-[13px] text-on-surface-variant mt-1 max-w-xs">Coverage access is scoped strictly to clients within Youth Outreach.</p>
+    </div>
+  </main>
+</body>
+</html>
